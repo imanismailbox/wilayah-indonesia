@@ -63,10 +63,10 @@ return [
 ```
 Lalu daftarkan konfigurasi dalam `bootstrap/app.php` dengan menambahkan kode berikut.
 ```php
-$app->configure('karomap');
+$app->configure('wilayah-indonesia');
 ```
 
-Untuk selanjutnya, konfigurasi bisa dipanggil dengan cara `config('karomap.indonesia.table_prefix')`.
+Untuk selanjutnya, konfigurasi bisa dipanggil dengan cara `config('wilayah-indonesia.table_prefix')`.
 
 ### Publish Migration (Hanya Untuk Laravel/Lumen 5.2)
 
