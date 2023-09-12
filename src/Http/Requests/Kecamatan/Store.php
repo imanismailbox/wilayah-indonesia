@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravolt\Indonesia\Http\Requests\Kecamatan;
+namespace Karomap\Indonesia\Http\Requests\Kecamatan;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Laravolt\Indonesia\Models\Kecamatan;
+use Karomap\Indonesia\Models\Kecamatan;
 
 class Store extends FormRequest
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravolt\Indonesia\Commands;
+namespace Karomap\Indonesia\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -12,7 +12,7 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'laravolt:indonesia:seed';
+    protected $signature = 'karomap:indonesia:seed';
 
     /**
      * The console command description.
@@ -38,7 +38,7 @@ class SeedCommand extends Command
      */
     public function handle()
     {
-        Artisan::call('db:seed', ['--class' => 'Laravolt\Indonesia\Seeds\DatabaseSeeder', '--force' => true]);
-        $this->info('Seeded: Laravolt\Indonesia\Seeds\IndonesiaSeeder');
+        Artisan::call('db:seed', ['--class' => 'Karomap\Indonesia\Seeds\DatabaseSeeder', '--force' => true]);
+        $this->info('Seeded: Karomap\Indonesia\Seeds\IndonesiaSeeder');
     }
 }

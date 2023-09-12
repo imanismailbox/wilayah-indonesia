@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravolt\Indonesia;
+namespace Karomap\Indonesia;
 
 class IndonesiaService
 {
@@ -18,10 +18,10 @@ class IndonesiaService
         $result = collect([]);
 
         if ($this->search) {
-            $provinces = Models\Province::search($this->search)->get();
-            $cities = Models\City::search($this->search)->get();
-            $districts = Models\District::search($this->search)->get();
-            $villages = Models\Village::search($this->search)->get();
+            $provinces = Models\Provinsi::search($this->search)->get();
+            $cities = Models\Kokab::search($this->search)->get();
+            $districts = Models\Kecamatan::search($this->search)->get();
+            $villages = Models\Desa::search($this->search)->get();
             $result->push($provinces);
             $result->push($cities);
             $result->push($districts);
@@ -34,73 +34,73 @@ class IndonesiaService
     public function allProvinces()
     {
         if ($this->search) {
-            return Models\Province::search($this->search)->get();
+            return Models\Provinsi::search($this->search)->get();
         }
 
-        return Models\Province::all();
+        return Models\Provinsi::all();
     }
 
     public function paginateProvinces($numRows = 15)
     {
         if ($this->search) {
-            return Models\Province::search($this->search)->paginate();
+            return Models\Provinsi::search($this->search)->paginate();
         }
 
-        return Models\Province::paginate($numRows);
+        return Models\Provinsi::paginate($numRows);
     }
 
     public function allCities()
     {
         if ($this->search) {
-            return Models\City::search($this->search)->get();
+            return Models\Kokab::search($this->search)->get();
         }
 
-        return Models\City::all();
+        return Models\Kokab::all();
     }
 
     public function paginateCities($numRows = 15)
     {
         if ($this->search) {
-            return Models\City::search($this->search)->paginate();
+            return Models\Kokab::search($this->search)->paginate();
         }
 
-        return Models\City::paginate($numRows);
+        return Models\Kokab::paginate($numRows);
     }
 
     public function allDistricts()
     {
         if ($this->search) {
-            return Models\District::search($this->search)->get();
+            return Models\Kecamatan::search($this->search)->get();
         }
 
-        return Models\District::all();
+        return Models\Kecamatan::all();
     }
 
     public function paginateDistricts($numRows = 15)
     {
         if ($this->search) {
-            return Models\District::search($this->search)->paginate();
+            return Models\Kecamatan::search($this->search)->paginate();
         }
 
-        return Models\District::paginate($numRows);
+        return Models\Kecamatan::paginate($numRows);
     }
 
     public function allVillages()
     {
         if ($this->search) {
-            return Models\Village::search($this->search)->get();
+            return Models\Desa::search($this->search)->get();
         }
 
-        return Models\Village::all();
+        return Models\Desa::all();
     }
 
     public function paginateVillages($numRows = 15)
     {
         if ($this->search) {
-            return Models\Village::search($this->search)->paginate();
+            return Models\Desa::search($this->search)->paginate();
         }
 
-        return Models\Village::paginate($numRows);
+        return Models\Desa::paginate($numRows);
     }
 
     public function findProvince($provinceId, $with = null)
@@ -108,22 +108,22 @@ class IndonesiaService
         $with = (array) $with;
 
         if ($with) {
-            $withVillages = array_search('villages', $with);
+            $withVillages = array_search('desa', $with);
 
             if ($withVillages !== false) {
                 unset($with[$withVillages]);
 
-                $province = Models\Province::with($with)->find($provinceId);
+                $province = Models\Provinsi::with($with)->find($provinceId);
 
-                $province = $this->loadRelation($province, 'cities.districts.villages');
+                $province = $this->loadRelation($province, 'kokab.kecamatan.desa');
             } else {
-                $province = Models\Province::with($with)->find($provinceId);
+                $province = Models\Provinsi::with($with)->find($provinceId);
             }
 
             return $province;
         }
 
-        return Models\Province::find($provinceId);
+        return Models\Provinsi::find($provinceId);
     }
 
     public function findCity($cityId, $with = null)
@@ -131,10 +131,10 @@ class IndonesiaService
         $with = (array) $with;
 
         if ($with) {
-            return Models\City::with($with)->find($cityId);
+            return Models\Kokab::with($with)->find($cityId);
         }
 
-        return Models\City::find($cityId);
+        return Models\Kokab::find($cityId);
     }
 
     public function findDistrict($districtId, $with = null)
@@ -142,22 +142,22 @@ class IndonesiaService
         $with = (array) $with;
 
         if ($with) {
-            $withProvince = array_search('province', $with);
+            $withProvince = array_search('provinsi', $with);
 
             if ($withProvince !== false) {
                 unset($with[$withProvince]);
 
-                $district = Models\District::with($with)->find($districtId);
+                $district = Models\Kecamatan::with($with)->find($districtId);
 
-                $district = $this->loadRelation($district, 'city.province', true);
+                $district = $this->loadRelation($district, 'kokab.provinsi', true);
             } else {
-                $district = Models\District::with($with)->find($districtId);
+                $district = Models\Kecamatan::with($with)->find($districtId);
             }
 
             return $district;
         }
 
-        return Models\District::find($districtId);
+        return Models\Kecamatan::find($districtId);
     }
 
     public function findVillage($villageId, $with = null)
@@ -165,38 +165,38 @@ class IndonesiaService
         $with = (array) $with;
 
         if ($with) {
-            $withCity = array_search('city', $with);
-            $withProvince = array_search('province', $with);
+            $withCity = array_search('kokab', $with);
+            $withProvince = array_search('provinsi', $with);
 
             if ($withCity !== false && $withProvince !== false) {
                 unset($with[$withCity]);
                 unset($with[$withProvince]);
 
-                $village = Models\Village::with($with)->find($villageId);
+                $village = Models\Desa::with($with)->find($villageId);
 
-                $village = $this->loadRelation($village, 'district.city', true);
+                $village = $this->loadRelation($village, 'kecamatan.kokab', true);
 
-                $village = $this->loadRelation($village, 'district.city.province', true);
+                $village = $this->loadRelation($village, 'kecamatan.kokab.provinsi', true);
             } elseif ($withCity !== false) {
                 unset($with[$withCity]);
 
-                $village = Models\Village::with($with)->find($villageId);
+                $village = Models\Desa::with($with)->find($villageId);
 
-                $village = $this->loadRelation($village, 'district.city', true);
+                $village = $this->loadRelation($village, 'kecamatan.kokab', true);
             } elseif ($withProvince !== false) {
                 unset($with[$withProvince]);
 
-                $village = Models\Village::with($with)->find($villageId);
+                $village = Models\Desa::with($with)->find($villageId);
 
-                $village = $this->loadRelation($village, 'district.city.province', true);
+                $village = $this->loadRelation($village, 'kecamatan.kokab.provinsi', true);
             } else {
-                $village = Models\Village::with($with)->find($villageId);
+                $village = Models\Desa::with($with)->find($villageId);
             }
 
             return $village;
         }
 
-        return Models\Village::find($villageId);
+        return Models\Desa::find($villageId);
     }
 
     private function loadRelation($object, $relation, $belongsTo = false)

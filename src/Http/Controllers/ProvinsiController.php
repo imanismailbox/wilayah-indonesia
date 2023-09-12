@@ -1,13 +1,13 @@
 <?php
 
-namespace Laravolt\Indonesia\Http\Controllers;
+namespace Karomap\Indonesia\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Routing\Controller;
-use Laravolt\Indonesia\Http\Requests\Provinsi\Store;
-use Laravolt\Indonesia\Http\Requests\Provinsi\Update;
-use Laravolt\Indonesia\Models\Extended\Provinsi;
-use Laravolt\Indonesia\Tables\ProvinsiTable;
+use Karomap\Indonesia\Http\Requests\Provinsi\Store;
+use Karomap\Indonesia\Http\Requests\Provinsi\Update;
+use Karomap\Indonesia\Models\Extended\Provinsi;
+use Karomap\Indonesia\Tables\ProvinsiTable;
 
 class ProvinsiController extends Controller
 {

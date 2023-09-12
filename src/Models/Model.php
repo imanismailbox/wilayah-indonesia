@@ -1,16 +1,12 @@
 <?php
 
-namespace Laravolt\Indonesia\Models;
+namespace Karomap\Indonesia\Models;
 
 class Model extends \Illuminate\Database\Eloquent\Model
 {
     protected $keyType = 'string';
 
-    protected $searchableColumns = ['code', 'name'];
-
-    protected $casts = [
-        'meta' => 'array',
-    ];
+    protected $searchableColumns = ['kode', 'nama'];
 
     protected $guarded = [];
 
@@ -20,7 +16,9 @@ class Model extends \Illuminate\Database\Eloquent\Model
     {
         parent::__construct($attributes);
 
-        $this->table = config('laravolt.indonesia.table_prefix').$this->table;
+        $this->table = config('wilayah-indonesia.table_prefix') . $this->table;
+        $this->primaryKey = 'kode';
+        $this->appends = ['address'];
     }
 
     public function scopeSearch($query, $keyword)

@@ -1,23 +1,39 @@
 <?php
 
-namespace Laravolt\Indonesia\Models;
+namespace Karomap\Indonesia\Models;
 
-class Kecamatan extends District
+class Kecamatan extends Model
 {
-    public function kabupaten()
+    protected $table = 'kecamatan';
+    protected $searchableColumns = ['kode', 'nama', 'kokab.nama'];
+
+    public function kokab()
     {
-        return $this->city();
+        return $this->belongsTo('Karomap\Indonesia\Models\Kokab', 'kode_kokab', 'kode');
+    }
+
+    public function desa()
+    {
+        return $this->hasMany('Karomap\Indonesia\Models\Desa', 'kode_kecamatan', 'kode');
+    }
+
+    public function getCityNameAttribute()
+    {
+        return $this->kokab->nama;
+    }
+
+    public function getProvinceNameAttribute()
+    {
+        return $this->kokab->provinsi->nama;
     }
 
     public function getAddressAttribute()
     {
-        $this->load('kabupaten.provinsi');
-
         return sprintf(
             '%s, %s, %s, Indonesia',
-            $this->name,
-            $this->kabupaten->name,
-            $this->kabupaten->provinsi->name
+            $this->nama,
+            $this->kokab->nama,
+            $this->kokab->provinsi->nama
         );
     }
 }

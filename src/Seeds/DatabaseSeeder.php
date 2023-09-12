@@ -1,13 +1,13 @@
 <?php
 
-namespace Laravolt\Indonesia\Seeds;
+namespace Karomap\Indonesia\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
-use Laravolt\Indonesia\Models\Kabupaten;
-use Laravolt\Indonesia\Models\Kecamatan;
-use Laravolt\Indonesia\Models\Kelurahan;
-use Laravolt\Indonesia\Models\Provinsi;
+use Karomap\Indonesia\Models\Desa;
+use Karomap\Indonesia\Models\Kecamatan;
+use Karomap\Indonesia\Models\Kokab;
+use Karomap\Indonesia\Models\Provinsi;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,19 +20,19 @@ class DatabaseSeeder extends Seeder
     {
         $this->reset();
 
-        $this->call(ProvincesSeeder::class);
-        $this->call(CitiesSeeder::class);
-        $this->call(DistrictsSeeder::class);
-        $this->call(VillagesSeeder::class);
+        $this->call(ProvinsiSeeder::class);
+        $this->call(KokabSeeder::class);
+        $this->call(KecamatanSeeder::class);
+        $this->call(DesaSeeder::class);
     }
 
     public function reset()
     {
         Schema::disableForeignKeyConstraints();
 
-        Kelurahan::truncate();
+        Desa::truncate();
         Kecamatan::truncate();
-        Kabupaten::truncate();
+        Kokab::truncate();
         Provinsi::truncate();
 
         Schema::disableForeignKeyConstraints();

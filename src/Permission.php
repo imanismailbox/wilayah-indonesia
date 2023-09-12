@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravolt\Indonesia;
+namespace Karomap\Indonesia;
 
 final class Permission
 {

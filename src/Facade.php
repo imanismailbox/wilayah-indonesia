@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravolt\Indonesia;
+namespace Karomap\Indonesia;
 
 use Illuminate\Support\Facades\Facade as BaseFacade;
 

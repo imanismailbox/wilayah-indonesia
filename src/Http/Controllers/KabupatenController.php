@@ -1,13 +1,13 @@
 <?php
 
-namespace Laravolt\Indonesia\Http\Controllers;
+namespace Karomap\Indonesia\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Routing\Controller;
-use Laravolt\Indonesia\Http\Requests\Kabupaten\Store;
-use Laravolt\Indonesia\Http\Requests\Kabupaten\Update;
-use Laravolt\Indonesia\Models\Extended\Kabupaten;
-use Laravolt\Indonesia\Tables\KabupatenTable;
+use Karomap\Indonesia\Http\Requests\Kabupaten\Store;
+use Karomap\Indonesia\Http\Requests\Kabupaten\Update;
+use Karomap\Indonesia\Models\Extended\Kabupaten;
+use Karomap\Indonesia\Tables\KabupatenTable;
 
 class KabupatenController extends Controller
 {
