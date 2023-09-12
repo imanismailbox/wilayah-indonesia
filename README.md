@@ -1,6 +1,3 @@
-[![StyleCI](https://github.styleci.io/repos/63410706/shield?branch=master)](https://github.styleci.io/repos/63410706)
-[![Build Status](https://travis-ci.org/imanismailbox/wilayah-indonesia.svg?branch=master)](https://travis-ci.org/imanismailbox/wilayah-indonesia)
-[![Coverage Status](https://coveralls.io/repos/github/imanismailbox/wilayah-indonesia/badge.svg?branch=master)](https://coveralls.io/github/imanismailbox/wilayah-indonesia?branch=master)
 # ITIK INDONESIA
 
 Package Laravel yang berisi data Provinsi, Kabupaten/Kota, dan Kecamatan/Desa di seluruh Indonesia.
