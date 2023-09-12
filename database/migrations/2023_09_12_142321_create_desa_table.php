@@ -13,7 +13,7 @@ class CreateDesaTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('itik.indonesia.table_prefix') . 'desa', function (Blueprint $table) {
+        Schema::create(config('wilayah-indonesia.table_prefix') . 'desa', function (Blueprint $table) {
             // $table->bigIncrements('id');
             $table->char('kode', 10)->unique()->primary();
             $table->char('kode_kecamatan', 7);
@@ -22,7 +22,7 @@ class CreateDesaTable extends Migration
 
             $table->foreign('kode_kecamatan')
                 ->references('kode')
-                ->on(config('itik.indonesia.table_prefix') . 'kecamatan')
+                ->on(config('wilayah-indonesia.table_prefix') . 'kecamatan')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
@@ -34,6 +34,6 @@ class CreateDesaTable extends Migration
      */
     public function down()
     {
-        Schema::drop(config('itik.indonesia.table_prefix') . 'desa');
+        Schema::drop(config('wilayah-indonesia.table_prefix') . 'desa');
     }
 }

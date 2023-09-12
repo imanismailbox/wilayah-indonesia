@@ -13,7 +13,7 @@ class CreateKokabTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('itik.indonesia.table_prefix') . 'kokab', function (Blueprint $table) {
+        Schema::create(config('wilayah-indonesia.table_prefix') . 'kokab', function (Blueprint $table) {
             // $table->bigIncrements('id');
             $table->char('kode', 4)->unique()->primary();
             $table->char('kode_provinsi', 2);
@@ -22,7 +22,7 @@ class CreateKokabTable extends Migration
 
             $table->foreign('kode_provinsi')
                 ->references('kode')
-                ->on(config('itik.indonesia.table_prefix') . 'provinsi')
+                ->on(config('wilayah-indonesia.table_prefix') . 'provinsi')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
@@ -34,6 +34,6 @@ class CreateKokabTable extends Migration
      */
     public function down()
     {
-        Schema::drop(config('itik.indonesia.table_prefix') . 'kokab');
+        Schema::drop(config('wilayah-indonesia.table_prefix') . 'kokab');
     }
 }
