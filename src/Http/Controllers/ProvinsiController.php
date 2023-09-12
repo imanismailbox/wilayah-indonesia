@@ -1,13 +1,13 @@
 <?php
 
-namespace Karomap\Indonesia\Http\Controllers;
+namespace Itik\Indonesia\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Routing\Controller;
-use Karomap\Indonesia\Http\Requests\Provinsi\Store;
-use Karomap\Indonesia\Http\Requests\Provinsi\Update;
-use Karomap\Indonesia\Models\Extended\Provinsi;
-use Karomap\Indonesia\Tables\ProvinsiTable;
+use Itik\Indonesia\Http\Requests\Provinsi\Store;
+use Itik\Indonesia\Http\Requests\Provinsi\Update;
+use Itik\Indonesia\Models\Extended\Provinsi;
+use Itik\Indonesia\Tables\ProvinsiTable;
 
 class ProvinsiController extends Controller
 {

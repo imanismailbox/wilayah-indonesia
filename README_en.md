@@ -1,4 +1,4 @@
-# LARAVOLT INDONESIA
+# ITIK INDONESIA
 
 Laravel Package that contains Provinces Data, City/Districts, and Villages in Indonesia.
 Data was taken from [edwardsamuel/Wilayah-Administratif-Indonesia](https://github.com/edwardsamuel/Wilayah-Administratif-Indonesia)
@@ -7,16 +7,16 @@ Data was taken from [edwardsamuel/Wilayah-Administratif-Indonesia](https://githu
 
 ### Package Installation
 
-Add Laravolt/Indonesia package with
+Add Itik/Indonesia package with
 
-`composer require laravolt/indonesia`
+`composer require itik/indonesia`
 
 Add Facade and Service Provider in `config/app.php`
 
 ```
 'providers' => [
 
-    Laravolt\Indonesia\ServiceProvider::class
+    Itik\Indonesia\ServiceProvider::class
 
 ]
 ```
@@ -24,7 +24,7 @@ Add Facade and Service Provider in `config/app.php`
 ```
 'aliases' => [
 
-    'Indonesia' => Laravolt\Indonesia\Facade::class
+    'Indonesia' => Itik\Indonesia\Facade::class
 
 ]
 ```
@@ -32,7 +32,7 @@ Add Facade and Service Provider in `config/app.php`
 ### Publish Migration (Only for Laravel 5.2)
 If you are using Laravel version 5.3+, you can ignore this step.
 ```
-php artisan vendor:publish --provider="Laravolt\Indonesia\ServiceProvider"
+php artisan vendor:publish --provider="Itik\Indonesia\ServiceProvider"
 ```
 
 ### Run Migration
@@ -42,7 +42,7 @@ php artisan migrate
 
 ### Run Database Seeder to Populate the Database
 ```
-php artisan laravolt:indonesia:seed
+php artisan itik:indonesia:seed
 ```
 
 ## Usage

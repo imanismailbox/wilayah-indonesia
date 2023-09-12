@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia;
+namespace Itik\Indonesia;
 
 class IndonesiaService
 {

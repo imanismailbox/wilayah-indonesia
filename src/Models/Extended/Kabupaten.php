@@ -1,11 +1,11 @@
 <?php
 
-namespace Karomap\Indonesia\Models\Extended;
+namespace Itik\Indonesia\Models\Extended;
 
-use Laravolt\Support\Traits\AutoFilter;
-use Laravolt\Support\Traits\AutoSort;
+use Itik\Support\Traits\AutoFilter;
+use Itik\Support\Traits\AutoSort;
 
-class Kabupaten extends \Karomap\Indonesia\Models\Kabupaten
+class Kabupaten extends \Itik\Indonesia\Models\Kabupaten
 {
     use AutoFilter;
     use AutoSort;

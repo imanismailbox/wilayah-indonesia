@@ -1,5 +1,5 @@
 @extends(
-    config('laravolt.indonesia.view.layout'),
+    config('itik.indonesia.view.layout'),
     [
         '__page' => [
             'title' => __('Kota/Kabupaten'),
@@ -21,7 +21,7 @@
         {!! form()->hidden('previous_id')->value($kabupaten->getKey()) !!}
         {!! form()->text('id')->label('Kode')->required() !!}
         {!! form()->text('name')->label('Name')->required() !!}
-        {!! form()->select('province_id', \Laravolt\Indonesia\Models\Provinsi::pluck('name', 'id'))->label('Provinsi')->required() !!}
+        {!! form()->select('province_id', \Itik\Indonesia\Models\Provinsi::pluck('name', 'id'))->label('Provinsi')->required() !!}
         {!! form()->action([
             form()->submit('Save'),
             form()->link('Cancel', route('indonesia::kabupaten.index'))

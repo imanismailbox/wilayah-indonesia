@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia\Models;
+namespace Itik\Indonesia\Models;
 
 class Desa extends Model
 {
@@ -9,7 +9,7 @@ class Desa extends Model
 
     public function kecamatan()
     {
-        return $this->belongsTo('Karomap\Indonesia\Models\Kecamatan', 'kode_kecamatan', 'kode');
+        return $this->belongsTo('Itik\Indonesia\Models\Kecamatan', 'kode_kecamatan', 'kode');
     }
 
     public function getDistrictNameAttribute()

@@ -2,10 +2,10 @@
 
 $router->group(
     [
-        'namespace' => '\Laravolt\Indonesia\Http\Controllers',
-        'prefix' => config('laravolt.indonesia.route.prefix'),
+        'namespace' => '\Itik\Indonesia\Http\Controllers',
+        'prefix' => config('itik.indonesia.route.prefix'),
         'as' => 'indonesia::',
-        'middleware' => config('laravolt.indonesia.route.middleware'),
+        'middleware' => config('itik.indonesia.route.middleware'),
     ],
     function ($router) {
         $router->resource('provinsi', 'ProvinsiController');

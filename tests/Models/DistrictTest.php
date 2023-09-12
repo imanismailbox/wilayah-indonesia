@@ -1,20 +1,20 @@
 <?php
 
-namespace Karomap\Indonesia\Test\Models;
+namespace Itik\Indonesia\Test\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Karomap\Indonesia\Models\Kokab;
-use Karomap\Indonesia\Models\Kecamatan;
-use Karomap\Indonesia\Models\Desa;
-use Karomap\Indonesia\Test\TestCase;
+use Itik\Indonesia\Models\Kokab;
+use Itik\Indonesia\Models\Kecamatan;
+use Itik\Indonesia\Models\Desa;
+use Itik\Indonesia\Test\TestCase;
 
 class DistrictTest extends TestCase
 {
     /** @test */
     public function a_district_has_belongs_to_city_relation()
     {
-        $this->seed('Karomap\Indonesia\Seeds\KokabSeeder');
-        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KecamatanSeeder');
 
         $district = Kecamatan::first();
 
@@ -25,8 +25,8 @@ class DistrictTest extends TestCase
     /** @test */
     public function a_district_has_many_villages_relation()
     {
-        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
-        $this->seed('Karomap\Indonesia\Seeds\DesaSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Itik\Indonesia\Seeds\DesaSeeder');
 
         $district = Kecamatan::first();
 
@@ -37,7 +37,7 @@ class DistrictTest extends TestCase
     /** @test */
     public function a_district_has_name_attribute()
     {
-        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KecamatanSeeder');
 
         $district = Kecamatan::first();
 
@@ -47,8 +47,8 @@ class DistrictTest extends TestCase
     /** @test */
     public function a_district_has_city_name_attribute()
     {
-        $this->seed('Karomap\Indonesia\Seeds\KokabSeeder');
-        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KecamatanSeeder');
 
         $district = Kecamatan::first();
 
@@ -58,9 +58,9 @@ class DistrictTest extends TestCase
     /** @test */
     public function a_district_has_province_name_attribute()
     {
-        $this->seed('Karomap\Indonesia\Seeds\ProvincesSeeder');
-        $this->seed('Karomap\Indonesia\Seeds\KokabSeeder');
-        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Itik\Indonesia\Seeds\ProvincesSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KecamatanSeeder');
 
         $district = Kecamatan::first();
 
@@ -70,7 +70,7 @@ class DistrictTest extends TestCase
     /** @test */
     public function a_district_can_store_meta_column()
     {
-        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Itik\Indonesia\Seeds\KecamatanSeeder');
 
         $district = Kecamatan::first();
         $district->meta = ['luas_wilayah' => 200.2];

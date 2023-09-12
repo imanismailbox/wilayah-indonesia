@@ -1,5 +1,5 @@
 @extends(
-    config('laravolt.indonesia.view.layout'),
+    config('itik.indonesia.view.layout'),
     [
         '__page' => [
             'title' => __('Kecamatan'),
@@ -20,7 +20,7 @@
         {!! form()->post(route('indonesia::kecamatan.store')) !!}
         {!! form()->text('id')->label('Kode')->required() !!}
         {!! form()->text('name')->label('Nama')->required() !!}
-        {!! form()->select('city_id', \Laravolt\Indonesia\Models\Kabupaten::pluck('name', 'id'))->label('Kabupaten')->required() !!}
+        {!! form()->select('city_id', \Itik\Indonesia\Models\Kabupaten::pluck('name', 'id'))->label('Kabupaten')->required() !!}
         {!! form()->action([
             form()->submit('Save'),
             form()->link('Cancel', route('indonesia::kecamatan.index'))

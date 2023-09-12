@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia\Models;
+namespace Itik\Indonesia\Models;
 
 class Provinsi extends Model
 {
@@ -8,14 +8,14 @@ class Provinsi extends Model
 
     public function kokab()
     {
-        return $this->hasMany('Karomap\Indonesia\Models\Kokab', 'kode_provinsi', 'kode');
+        return $this->hasMany('Itik\Indonesia\Models\Kokab', 'kode_provinsi', 'kode');
     }
 
     public function kecamatan()
     {
         return $this->hasManyThrough(
-            'Karomap\Indonesia\Models\Kecamatan',
-            'Karomap\Indonesia\Models\Kokab',
+            'Itik\Indonesia\Models\Kecamatan',
+            'Itik\Indonesia\Models\Kokab',
             'kode_provinsi',
             'kode_kokab',
             'kode',

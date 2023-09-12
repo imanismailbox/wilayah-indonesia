@@ -1,13 +1,13 @@
 <?php
 
-namespace Karomap\Indonesia\Seeds;
+namespace Itik\Indonesia\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
-use Karomap\Indonesia\Models\Desa;
-use Karomap\Indonesia\Models\Kecamatan;
-use Karomap\Indonesia\Models\Kokab;
-use Karomap\Indonesia\Models\Provinsi;
+use Itik\Indonesia\Models\Desa;
+use Itik\Indonesia\Models\Kecamatan;
+use Itik\Indonesia\Models\Kokab;
+use Itik\Indonesia\Models\Provinsi;
 
 class DatabaseSeeder extends Seeder
 {

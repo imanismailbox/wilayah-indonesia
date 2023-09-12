@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia\Test;
+namespace Itik\Indonesia\Test;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -14,14 +14,14 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Karomap\Indonesia\ServiceProvider::class,
+            \Itik\Indonesia\ServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'Indonesia' => \Karomap\Indonesia\Facade::class,
+            'Indonesia' => \Itik\Indonesia\Facade::class,
         ];
     }
 

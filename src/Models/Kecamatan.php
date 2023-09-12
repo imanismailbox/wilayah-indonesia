@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia\Models;
+namespace Itik\Indonesia\Models;
 
 class Kecamatan extends Model
 {
@@ -9,12 +9,12 @@ class Kecamatan extends Model
 
     public function kokab()
     {
-        return $this->belongsTo('Karomap\Indonesia\Models\Kokab', 'kode_kokab', 'kode');
+        return $this->belongsTo('Itik\Indonesia\Models\Kokab', 'kode_kokab', 'kode');
     }
 
     public function desa()
     {
-        return $this->hasMany('Karomap\Indonesia\Models\Desa', 'kode_kecamatan', 'kode');
+        return $this->hasMany('Itik\Indonesia\Models\Desa', 'kode_kecamatan', 'kode');
     }
 
     public function getCityNameAttribute()

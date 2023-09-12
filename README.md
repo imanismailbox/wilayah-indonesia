@@ -1,16 +1,17 @@
 [![StyleCI](https://github.styleci.io/repos/63410706/shield?branch=master)](https://github.styleci.io/repos/63410706)
-[![Build Status](https://travis-ci.org/karomap/indonesia.svg?branch=master)](https://travis-ci.org/karomap/indonesia)
-[![Coverage Status](https://coveralls.io/repos/github/karomap/indonesia/badge.svg?branch=master)](https://coveralls.io/github/karomap/indonesia?branch=master)
-# LARAVOLT INDONESIA
+[![Build Status](https://travis-ci.org/imanismailbox/wilayah-indonesia.svg?branch=master)](https://travis-ci.org/imanismailbox/wilayah-indonesia)
+[![Coverage Status](https://coveralls.io/repos/github/imanismailbox/wilayah-indonesia/badge.svg?branch=master)](https://coveralls.io/github/imanismailbox/wilayah-indonesia?branch=master)
+# ITIK INDONESIA
 
 Package Laravel yang berisi data Provinsi, Kabupaten/Kota, dan Kecamatan/Desa di seluruh Indonesia.
-Data wilayah diambil dari [edwardsamuel/Wilayah-Administratif-Indonesia](https://github.com/edwardsamuel/Wilayah-Administratif-Indonesia)
+Merupakan fork dari [laravolt/indonesia](https://github.com/laravolt/indonesia) yang telah dimodifikasi untuk keperluan API.
+Data wilayah diambil dari [edwardsamuel/Wilayah-Administratif-Indonesia](https://github.com/edwardsamuel/Wilayah-Administratif-Indonesia).
 
 ## Instalasi
 
 ### Install Package Via Composer
 ```
-composer require karomap/indonesia
+composer require itik/indonesia
 ```
 
 ### Daftarkan Service Provider dan Facade (Untuk Laravel < 5.5)
@@ -22,7 +23,7 @@ Tambahkan Service Provider dan Facade pada `config.app`
 ```php
 'providers' => [
 
-    Karomap\Indonesia\ServiceProvider::class
+    Itik\Indonesia\ServiceProvider::class
 
 ]
 ```
@@ -30,7 +31,7 @@ Tambahkan Service Provider dan Facade pada `config.app`
 ```php
 'aliases' => [
 
-    'Indonesia' => Karomap\Indonesia\Facade::class
+    'Indonesia' => Itik\Indonesia\Facade::class
 
 ]
 ```
@@ -44,11 +45,11 @@ $app->withEloquent();
 
 Dalam file `bootstrap/app.php`, daftarkan service provider dan alias/facade dengan menambahkan kode berokut.
 ```php
-$app->register(Karomap\Indonesia\ServiceProvider::class);
+$app->register(Itik\Indonesia\ServiceProvider::class);
 
 
 // class aliases
-class_alias(Karomap\Indonesia\Facade::class, 'Indonesia');
+class_alias(Itik\Indonesia\Facade::class, 'Indonesia');
 ```
 
 Untuk mengatur prefix tabel, buat file `config/wilayah-indonesia.php`, lalu copy kode berikut (ganti `indonesia_` dengan nilai prefix tabel yang diinginkan),
@@ -73,9 +74,9 @@ Untuk selanjutnya, konfigurasi bisa dipanggil dengan cara `config('wilayah-indon
 Jika Anda menggunakan Laravel/Lumen versi 5.3 ke atas, abaikan langkah di bawah ini.
 Untuk Laravel:
 ```php
-php artisan vendor:publish --provider="Karomap\Indonesia\ServiceProvider"
+php artisan vendor:publish --provider="Itik\Indonesia\ServiceProvider"
 ```
-Untuk Lumen, file migrations harus di-copy manual dari direktori `vendor/karomap/indonesia/database/migrations` atau [Migrations](database/migrations/)
+Untuk Lumen, file migrations harus di-copy manual dari direktori `vendor/itik/indonesia/database/migrations` atau [Migrations](database/migrations/)
 
 ### Jalankan Migration
 ```php
@@ -84,7 +85,7 @@ php artisan migrate
 
 ### Jalankan Seeder Untuk Mengisi Data Wilayah
 ```php
-php artisan karomap:indonesia:seed
+php artisan itik:indonesia:seed
 ```
 
 ### Untuk menambahkan seedernya ke file `DatabaseSeeder.php` ikuti contoh berikut:
@@ -92,10 +93,10 @@ php artisan karomap:indonesia:seed
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Karomap\Indonesia\Models\Desa;
-use Karomap\Indonesia\Models\Kecamatan;
-use Karomap\Indonesia\Models\Kokab;
-use Karomap\Indonesia\Models\Provinsi;
+use Itik\Indonesia\Models\Desa;
+use Itik\Indonesia\Models\Kecamatan;
+use Itik\Indonesia\Models\Kokab;
+use Itik\Indonesia\Models\Provinsi;
 
 class DatabaseSeeder extends Seeder
 {
@@ -133,61 +134,61 @@ class DatabaseSeeder extends Seeder
 ---
 
 ```php
-\Indonesia::findProvince($provinceId, $with = null)
-// array $with : ['cities', 'districts', 'villages', 'cities.districts', 'cities.districts.villages', 'districts.villages']
+\Indonesia::findProvince($kode, $with = null)
+// array $with : ['kokab', 'kecamatan', 'desa', 'kokab.kecamatan', 'kokab.kecamatan.desa', 'kecamatan.desa']
 
-\Indonesia::findCity($cityId, $with = null)
-// array $with : ['province', 'districts', 'villages', 'districts.villages']
+\Indonesia::findCity($kode, $with = null)
+// array $with : ['provinsi', 'kecamatan', 'desa', 'kecamatan.desa']
 
-Indonesia::findDistrict($districtId, $with = null)
-// array $with : ['province', 'city', 'city.province', 'villages']
+Indonesia::findDistrict($kode, $with = null)
+// array $with : ['provinsi', 'kokab', 'kokab.provinsi', 'desa']
 
-\Indonesia::findVillage($villageId, $with = null)
-// array $with : ['province', 'city', 'district', 'district.city', 'district.city.province']
+\Indonesia::findVillage($kode, $with = null)
+// array $with : ['provinsi', 'kokab', 'kecamatan', 'kecamatan.kokab', 'kecamatan.kokab.provinsi']
 ```
 
 #### Examples
 
 ```php
-Indonesia::findProvince(11, ['cities']);
+Indonesia::findProvince(11, ['kokab']);
 
 /*
 Will return
-Province Object {
-    'id' => 11,
-    'name' => 'ACEH',
-    'cities' => City Collections {
-        City Object,
-        City Object,
-        City Object,
+Provinsi Object {
+    'kode' => 11,
+    'nama' => 'ACEH',
+    'kokab' => Kokab Collections {
+        Kokab Object,
+        Kokab Object,
+        Kokab Object,
         ...
     }
 }
 */
 
-Indonesia::findProvince(11, ['cities', 'districts.villages']);
+Indonesia::findProvince(11, ['kokab', 'kecamatan.desa']);
 
 /*
 Will return
-Province Object {
-    'id' => 11,
-    'name' => 'ACEH',
-    'cities' => City Collections {
-        City Object,
-        City Object,
-        City Object,
+Provinsi Object {
+    'kode' => 11,
+    'nama' => 'ACEH',
+    'kokab' => Kokab Collections {
+        Kokab Object,
+        Kokab Object,
+        Kokab Object,
         ...
     },
-    'districts' => District Collections {
-        District Object {
-            'id' => 1101010
-            'city_id' => '1101'
-            'name' => 'TEUPAH SELATAN'
-            'province_id' => '11'
-            'villages' => Village Colletions {
-                Village Object,
-                Village Object,
-                Village Object,
+    'kecamatan' => Kecamatan Collections {
+        Kecamatan Object {
+            'kode' => 1101010
+            'kode_kokab' => '1101'
+            'nama' => 'TEUPAH SELATAN'
+            'kode_provinsi' => '11'
+            'desa' => Desa Colletions {
+                Desa Object,
+                Desa Object,
+                Desa Object,
                 ...
             }
         },
@@ -200,15 +201,15 @@ Province Object {
 ---
 
 ```php
-\Indonesia::search('jakarta')->all()
-\Indonesia::search('jakarta')->allProvinces()
-\Indonesia::search('jakarta')->paginateProvinces()
-\Indonesia::search('jakarta')->allCities()
-\Indonesia::search('jakarta')->paginateCities()
-\Indonesia::search('jakarta')->allDistricts()
-\Indonesia::search('jakarta')->paginateDistricts()
-\Indonesia::search('jakarta')->allVillages()
-\Indonesia::search('jakarta')->paginateVillages()
+\Indonesia::search('yogyakarta')->all()
+\Indonesia::search('yogyakarta')->allProvinces()
+\Indonesia::search('yogyakarta')->paginateProvinces()
+\Indonesia::search('yogyakarta')->allCities()
+\Indonesia::search('yogyakarta')->paginateCities()
+\Indonesia::search('yogyakarta')->allDistricts()
+\Indonesia::search('yogyakarta')->paginateDistricts()
+\Indonesia::search('yogyakarta')->allVillages()
+\Indonesia::search('yogyakarta')->paginateVillages()
 ```
 
 ---

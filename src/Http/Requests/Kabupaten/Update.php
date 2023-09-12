@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia\Http\Requests\Kabupaten;
+namespace Itik\Indonesia\Http\Requests\Kabupaten;
 
 class Update extends Store
 {

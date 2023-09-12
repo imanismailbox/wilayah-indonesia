@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia\Http\Requests\Provinsi;
+namespace Itik\Indonesia\Http\Requests\Provinsi;
 
 class Update extends Store
 {

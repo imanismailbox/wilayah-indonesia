@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravolt\Indonesia\Test;
+namespace Itik\Indonesia\Test;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 
@@ -11,7 +11,7 @@ class IndonesiaTest extends TestCase
     /** @test */
     public function it_can_call_indonesia_service()
     {
-        $this->artisan('karomap:indonesia:seed');
+        $this->artisan('itik:indonesia:seed');
 
         $this->checkProvinces();
         $this->checkCities();

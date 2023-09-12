@@ -1,11 +1,11 @@
 <?php
 
-namespace Karomap\Indonesia\Models\Extended;
+namespace Itik\Indonesia\Models\Extended;
 
-use Laravolt\Support\Traits\AutoFilter;
-use Laravolt\Support\Traits\AutoSort;
+use Itik\Support\Traits\AutoFilter;
+use Itik\Support\Traits\AutoSort;
 
-class Provinsi extends \Karomap\Indonesia\Models\Provinsi
+class Provinsi extends \Itik\Indonesia\Models\Provinsi
 {
     use AutoFilter;
     use AutoSort;

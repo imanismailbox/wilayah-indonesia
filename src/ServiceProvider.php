@@ -1,14 +1,14 @@
 <?php
 
-namespace Karomap\Indonesia;
+namespace Itik\Indonesia;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\Support\Str;
-use Karomap\Indonesia\Commands\SeedCommand;
-// use Karomap\Indonesia\Commands\SyncCoordinateCommand;
+use Itik\Indonesia\Commands\SeedCommand;
+// use Itik\Indonesia\Commands\SyncCoordinateCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -57,8 +57,8 @@ class ServiceProvider extends BaseServiceProvider
             $this->registerMenu();
         }
 
-        if ($this->app->bound('laravolt.acl')) {
-            $this->app['laravolt.acl']->registerPermission(Permission::toArray());
+        if ($this->app->bound('itik.acl')) {
+            $this->app['itik.acl']->registerPermission(Permission::toArray());
         }
 
         $this->registerMacro();
@@ -66,8 +66,8 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function registerMenu()
     {
-        if ($this->app->bound('laravolt.menu')) {
-            $menu = app('laravolt.menu')->add('Data Wilayah');
+        if ($this->app->bound('itik.menu')) {
+            $menu = app('itik.menu')->add('Data Wilayah');
             $menu->add(__('Provinsi'), route('indonesia::provinsi.index'))
                 ->data('icon', 'map')
                 ->data('permission', Permission::MANAGE_INDONESIA)

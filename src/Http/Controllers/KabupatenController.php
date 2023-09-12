@@ -1,13 +1,13 @@
 <?php
 
-namespace Karomap\Indonesia\Http\Controllers;
+namespace Itik\Indonesia\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Routing\Controller;
-use Karomap\Indonesia\Http\Requests\Kabupaten\Store;
-use Karomap\Indonesia\Http\Requests\Kabupaten\Update;
-use Karomap\Indonesia\Models\Extended\Kabupaten;
-use Karomap\Indonesia\Tables\KabupatenTable;
+use Itik\Indonesia\Http\Requests\Kabupaten\Store;
+use Itik\Indonesia\Http\Requests\Kabupaten\Update;
+use Itik\Indonesia\Models\Extended\Kabupaten;
+use Itik\Indonesia\Tables\KabupatenTable;
 
 class KabupatenController extends Controller
 {

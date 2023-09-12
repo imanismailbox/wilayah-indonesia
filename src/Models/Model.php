@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia\Models;
+namespace Itik\Indonesia\Models;
 
 class Model extends \Illuminate\Database\Eloquent\Model
 {

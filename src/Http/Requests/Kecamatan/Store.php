@@ -1,10 +1,10 @@
 <?php
 
-namespace Karomap\Indonesia\Http\Requests\Kecamatan;
+namespace Itik\Indonesia\Http\Requests\Kecamatan;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Karomap\Indonesia\Models\Kecamatan;
+use Itik\Indonesia\Models\Kecamatan;
 
 class Store extends FormRequest
 {

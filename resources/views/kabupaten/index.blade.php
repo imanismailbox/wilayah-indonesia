@@ -1,5 +1,5 @@
 @extends(
-    config('laravolt.indonesia.view.layout'),
+    config('itik.indonesia.view.layout'),
     [
         '__page' => [
             'title' => __('Kota/Kabupaten'),

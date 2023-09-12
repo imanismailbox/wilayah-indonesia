@@ -1,9 +1,9 @@
 {
-  "name": "karomap/indonesia",
-  "description": "Package Laravel yang berisi data Provinsi, Kabupaten/Kota, Kecamatan, dan Keluarahan/Desa di seluruh Indonesia. clone from laravolt/indonesia",
+  "name": "itik/indonesia",
+  "description": "Package Laravel yang berisi data Provinsi, Kabupaten/Kota, Kecamatan, dan Keluarahan/Desa di seluruh Indonesia. clone from itik/indonesia",
   "keywords": [
     "laravel",
-    "laravolt",
+    "itik",
     "indonesia",
     "provinsi",
     "kabupaten",
@@ -21,12 +21,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Karomap\\Indonesia\\": "src/"
+      "Itik\\Indonesia\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Karomap\\Indonesia\\Test\\": "tests/"
+      "Itik\\Indonesia\\Test\\": "tests/"
     }
   },
   "require": {
@@ -44,10 +44,10 @@
     },
     "laravel": {
       "providers": [
-        "Karomap\\Indonesia\\ServiceProvider"
+        "Itik\\Indonesia\\ServiceProvider"
       ],
       "aliases": {
-        "Indonesia": "Karomap\\Indonesia\\Facade"
+        "Indonesia": "Itik\\Indonesia\\Facade"
       }
     }
   }

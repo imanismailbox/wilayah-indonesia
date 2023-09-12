@@ -1,6 +1,6 @@
 <?php
 
-namespace Karomap\Indonesia\Seeds;
+namespace Itik\Indonesia\Seeds;
 
 class CsvtoArray
 {

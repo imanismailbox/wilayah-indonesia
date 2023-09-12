@@ -13,7 +13,7 @@ class CreateKecamatanTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('karomap.indonesia.table_prefix') . 'kecamatan', function (Blueprint $table) {
+        Schema::create(config('itik.indonesia.table_prefix') . 'kecamatan', function (Blueprint $table) {
             // $table->bigIncrements('id');
             $table->char('kode', 7)->unique()->primary();
             $table->char('kode_kokab', 4);
@@ -22,7 +22,7 @@ class CreateKecamatanTable extends Migration
 
             $table->foreign('kode_kokab')
                 ->references('kode')
-                ->on(config('karomap.indonesia.table_prefix') . 'kokab')
+                ->on(config('itik.indonesia.table_prefix') . 'kokab')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
@@ -34,6 +34,6 @@ class CreateKecamatanTable extends Migration
      */
     public function down()
     {
-        Schema::drop(config('karomap.indonesia.table_prefix') . 'kecamatan');
+        Schema::drop(config('itik.indonesia.table_prefix') . 'kecamatan');
     }
 }
