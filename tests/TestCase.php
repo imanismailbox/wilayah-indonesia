@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravolt\Indonesia\Test;
+namespace Karomap\Indonesia\Test;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -14,14 +14,14 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Laravolt\Indonesia\ServiceProvider::class,
+            \Karomap\Indonesia\ServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'Indonesia' => \Laravolt\Indonesia\Facade::class,
+            'Indonesia' => \Karomap\Indonesia\Facade::class,
         ];
     }
 

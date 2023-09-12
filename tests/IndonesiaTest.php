@@ -11,7 +11,7 @@ class IndonesiaTest extends TestCase
     /** @test */
     public function it_can_call_indonesia_service()
     {
-        $this->artisan('laravolt:indonesia:seed');
+        $this->artisan('karomap:indonesia:seed');
 
         $this->checkProvinces();
         $this->checkCities();
@@ -30,7 +30,7 @@ class IndonesiaTest extends TestCase
 
         $this->assertEquals(count($results), 15);
 
-        // array $with : cities, districts, villages, cities.districts, cities.districts.villages, districts.villages
+        // array $with : kokab, kecamatan, desa, kokab.kecamatan, kokab.kecamatan.desa, kecamatan.desa
 
         $selectedProvinceId = $results[0]->id;
 
@@ -38,31 +38,31 @@ class IndonesiaTest extends TestCase
 
         $this->assertEquals($result->id, $selectedProvinceId);
 
-        $result = \Indonesia::findProvince($selectedProvinceId, ['cities']);
+        $result = \Indonesia::findProvince($selectedProvinceId, ['kokab']);
 
-        $this->assertNotEmpty($result->cities);
+        $this->assertNotEmpty($result->kokab);
 
-        $result = \Indonesia::findProvince($selectedProvinceId, ['districts']);
+        $result = \Indonesia::findProvince($selectedProvinceId, ['kecamatan']);
 
-        $this->assertNotEmpty($result->districts);
+        $this->assertNotEmpty($result->kecamatan);
 
-        $result = \Indonesia::findProvince($selectedProvinceId, ['villages']);
+        $result = \Indonesia::findProvince($selectedProvinceId, ['desa']);
 
-        $this->assertNotEmpty($result->villages);
+        $this->assertNotEmpty($result->desa);
 
-        $result = \Indonesia::findProvince($selectedProvinceId, ['cities', 'districts.villages']);
+        $result = \Indonesia::findProvince($selectedProvinceId, ['kokab', 'kecamatan.desa']);
 
-        $this->assertNotEmpty($result->cities);
-        $this->assertNotEmpty($result->districts);
-        $this->assertNotEmpty($result->districts[0]->villages);
+        $this->assertNotEmpty($result->kokab);
+        $this->assertNotEmpty($result->kecamatan);
+        $this->assertNotEmpty($result->kecamatan[0]->desa);
 
-        $result = \Indonesia::findProvince($selectedProvinceId, ['cities.districts']);
+        $result = \Indonesia::findProvince($selectedProvinceId, ['kokab.kecamatan']);
 
-        $this->assertNotEmpty($result->cities[0]->districts);
+        $this->assertNotEmpty($result->kokab[0]->kecamatan);
 
-        $result = \Indonesia::findProvince($selectedProvinceId, ['cities.districts.villages']);
+        $result = \Indonesia::findProvince($selectedProvinceId, ['kokab.kecamatan.desa']);
 
-        $this->assertNotEmpty($result->cities[0]->districts[0]->villages);
+        $this->assertNotEmpty($result->kokab[0]->kecamatan[0]->desa);
     }
 
     public function checkCities()
@@ -75,7 +75,7 @@ class IndonesiaTest extends TestCase
 
         $this->assertEquals(count($results), 15);
 
-        // array $with : province, districts, villages, districts.villages
+        // array $with : provinsi, kecamatan, desa, kecamatan.desa
 
         $selectedCityId = $results[0]->id;
 
@@ -83,22 +83,22 @@ class IndonesiaTest extends TestCase
 
         $this->assertEquals($result->id, $selectedCityId);
 
-        $result = \Indonesia::findCity($selectedCityId, ['province']);
+        $result = \Indonesia::findCity($selectedCityId, ['provinsi']);
 
-        $this->assertNotEmpty($result->province);
+        $this->assertNotEmpty($result->provinsi);
 
-        $result = \Indonesia::findCity($selectedCityId, ['districts']);
+        $result = \Indonesia::findCity($selectedCityId, ['kecamatan']);
 
-        $this->assertNotEmpty($result->districts);
+        $this->assertNotEmpty($result->kecamatan);
 
-        $result = \Indonesia::findCity($selectedCityId, ['villages']);
+        $result = \Indonesia::findCity($selectedCityId, ['desa']);
 
-        $this->assertNotEmpty($result->villages);
+        $this->assertNotEmpty($result->desa);
 
-        $result = \Indonesia::findCity($selectedCityId, ['districts.villages']);
+        $result = \Indonesia::findCity($selectedCityId, ['kecamatan.desa']);
 
-        $this->assertNotEmpty($result->districts);
-        $this->assertNotEmpty($result->districts[0]->villages);
+        $this->assertNotEmpty($result->kecamatan);
+        $this->assertNotEmpty($result->kecamatan[0]->desa);
     }
 
     public function checkDistricts()
@@ -111,7 +111,7 @@ class IndonesiaTest extends TestCase
 
         $this->assertEquals(count($results), 15);
 
-        // array $with : province, city, city.province, villages
+        // array $with : provinsi, kokab, kokab.provinsi, desa
 
         $selectedDistrictId = $results[0]->id;
 
@@ -119,22 +119,22 @@ class IndonesiaTest extends TestCase
 
         $this->assertEquals($result->id, $selectedDistrictId);
 
-        $result = \Indonesia::findDistrict($selectedDistrictId, ['province']);
+        $result = \Indonesia::findDistrict($selectedDistrictId, ['provinsi']);
 
-        $this->assertNotEmpty($result->province);
+        $this->assertNotEmpty($result->provinsi);
 
-        $result = \Indonesia::findDistrict($selectedDistrictId, ['city']);
+        $result = \Indonesia::findDistrict($selectedDistrictId, ['kokab']);
 
-        $this->assertNotEmpty($result->city);
+        $this->assertNotEmpty($result->kokab);
 
-        $result = \Indonesia::findDistrict($selectedDistrictId, ['city.province']);
+        $result = \Indonesia::findDistrict($selectedDistrictId, ['kokab.provinsi']);
 
-        $this->assertNotEmpty($result->city);
-        $this->assertNotEmpty($result->city->province);
+        $this->assertNotEmpty($result->kokab);
+        $this->assertNotEmpty($result->kokab->provinsi);
 
-        $result = \Indonesia::findDistrict($selectedDistrictId, ['villages']);
+        $result = \Indonesia::findDistrict($selectedDistrictId, ['desa']);
 
-        $this->assertNotEmpty($result->villages);
+        $this->assertNotEmpty($result->desa);
     }
 
     public function checkVillages()
@@ -147,7 +147,7 @@ class IndonesiaTest extends TestCase
 
         $this->assertEquals(count($results), 15);
 
-        // array $with : province, city, district, district.city, district.city.province
+        // array $with : provinsi, kokab, kecamatan, kecamatan.kokab, kecamatan.kokab.provinsi
 
         $selectedVillageId = $results[0]->id;
 
@@ -155,29 +155,29 @@ class IndonesiaTest extends TestCase
 
         $this->assertEquals($result->id, $selectedVillageId);
 
-        $result = \Indonesia::findVillage($selectedVillageId, ['province']);
+        $result = \Indonesia::findVillage($selectedVillageId, ['provinsi']);
 
-        $this->assertNotEmpty($result->province);
+        $this->assertNotEmpty($result->provinsi);
 
-        $result = \Indonesia::findVillage($selectedVillageId, ['city']);
+        $result = \Indonesia::findVillage($selectedVillageId, ['kokab']);
 
-        $this->assertNotEmpty($result->city);
+        $this->assertNotEmpty($result->kokab);
 
-        $result = \Indonesia::findVillage($selectedVillageId, ['district.city']);
+        $result = \Indonesia::findVillage($selectedVillageId, ['kecamatan.kokab']);
 
-        $this->assertNotEmpty($result->district);
-        $this->assertNotEmpty($result->district->city);
+        $this->assertNotEmpty($result->kecamatan);
+        $this->assertNotEmpty($result->kecamatan->kokab);
 
-        $result = \Indonesia::findVillage($selectedVillageId, ['district.city.province']);
+        $result = \Indonesia::findVillage($selectedVillageId, ['kecamatan.kokab.provinsi']);
 
-        $this->assertNotEmpty($result->district);
-        $this->assertNotEmpty($result->district->city);
-        $this->assertNotEmpty($result->district->city->province);
+        $this->assertNotEmpty($result->kecamatan);
+        $this->assertNotEmpty($result->kecamatan->kokab);
+        $this->assertNotEmpty($result->kecamatan->kokab->provinsi);
     }
 
     public function search()
     {
-        $results = \Indonesia::search('BATAM')->all();
+        $results = \Indonesia::search('YOGYAKARTA')->all();
 
         $this->assertNotEmpty($results);
     }

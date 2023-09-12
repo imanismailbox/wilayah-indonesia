@@ -1,45 +1,45 @@
 <?php
 
-namespace Laravolt\Indonesia\Test\Models;
+namespace Karomap\Indonesia\Test\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Laravolt\Indonesia\Models\City;
-use Laravolt\Indonesia\Models\District;
-use Laravolt\Indonesia\Models\Village;
-use Laravolt\Indonesia\Test\TestCase;
+use Karomap\Indonesia\Models\Kokab;
+use Karomap\Indonesia\Models\Kecamatan;
+use Karomap\Indonesia\Models\Desa;
+use Karomap\Indonesia\Test\TestCase;
 
 class DistrictTest extends TestCase
 {
     /** @test */
     public function a_district_has_belongs_to_city_relation()
     {
-        $this->seed('Laravolt\Indonesia\Seeds\CitiesSeeder');
-        $this->seed('Laravolt\Indonesia\Seeds\DistrictsSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
 
-        $district = District::first();
+        $district = Kecamatan::first();
 
-        $this->assertInstanceOf(City::class, $district->city);
+        $this->assertInstanceOf(Kokab::class, $district->city);
         $this->assertEquals($district->city_code, $district->city->code);
     }
 
     /** @test */
     public function a_district_has_many_villages_relation()
     {
-        $this->seed('Laravolt\Indonesia\Seeds\DistrictsSeeder');
-        $this->seed('Laravolt\Indonesia\Seeds\VillagesSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\DesaSeeder');
 
-        $district = District::first();
+        $district = Kecamatan::first();
 
         $this->assertInstanceOf(Collection::class, $district->villages);
-        $this->assertInstanceOf(Village::class, $district->villages->first());
+        $this->assertInstanceOf(Desa::class, $district->villages->first());
     }
 
     /** @test */
     public function a_district_has_name_attribute()
     {
-        $this->seed('Laravolt\Indonesia\Seeds\DistrictsSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
 
-        $district = District::first();
+        $district = Kecamatan::first();
 
         $this->assertEquals('BAKONGAN', $district->name);
     }
@@ -47,10 +47,10 @@ class DistrictTest extends TestCase
     /** @test */
     public function a_district_has_city_name_attribute()
     {
-        $this->seed('Laravolt\Indonesia\Seeds\CitiesSeeder');
-        $this->seed('Laravolt\Indonesia\Seeds\DistrictsSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
 
-        $district = District::first();
+        $district = Kecamatan::first();
 
         $this->assertEquals('KABUPATEN ACEH SELATAN', $district->city_name);
     }
@@ -58,11 +58,11 @@ class DistrictTest extends TestCase
     /** @test */
     public function a_district_has_province_name_attribute()
     {
-        $this->seed('Laravolt\Indonesia\Seeds\ProvincesSeeder');
-        $this->seed('Laravolt\Indonesia\Seeds\CitiesSeeder');
-        $this->seed('Laravolt\Indonesia\Seeds\DistrictsSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\ProvincesSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
 
-        $district = District::first();
+        $district = Kecamatan::first();
 
         $this->assertEquals('ACEH', $district->province_name);
     }
@@ -70,9 +70,9 @@ class DistrictTest extends TestCase
     /** @test */
     public function a_district_can_store_meta_column()
     {
-        $this->seed('Laravolt\Indonesia\Seeds\DistrictsSeeder');
+        $this->seed('Karomap\Indonesia\Seeds\KecamatanSeeder');
 
-        $district = District::first();
+        $district = Kecamatan::first();
         $district->meta = ['luas_wilayah' => 200.2];
         $district->save();
 
