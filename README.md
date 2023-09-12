@@ -1,6 +1,6 @@
 [![StyleCI](https://github.styleci.io/repos/63410706/shield?branch=master)](https://github.styleci.io/repos/63410706)
-[![Build Status](https://travis-ci.org/laravolt/indonesia.svg?branch=master)](https://travis-ci.org/laravolt/indonesia)
-[![Coverage Status](https://coveralls.io/repos/github/laravolt/indonesia/badge.svg?branch=master)](https://coveralls.io/github/laravolt/indonesia?branch=master)
+[![Build Status](https://travis-ci.org/karomap/indonesia.svg?branch=master)](https://travis-ci.org/karomap/indonesia)
+[![Coverage Status](https://coveralls.io/repos/github/karomap/indonesia/badge.svg?branch=master)](https://coveralls.io/github/karomap/indonesia?branch=master)
 # LARAVOLT INDONESIA
 
 Package Laravel yang berisi data Provinsi, Kabupaten/Kota, dan Kecamatan/Desa di seluruh Indonesia.
@@ -10,7 +10,7 @@ Data wilayah diambil dari [edwardsamuel/Wilayah-Administratif-Indonesia](https:/
 
 ### Install Package Via Composer
 ```
-composer require laravolt/indonesia
+composer require karomap/indonesia
 ```
 
 ### Daftarkan Service Provider dan Facade (Untuk Laravel < 5.5)
@@ -22,7 +22,7 @@ Tambahkan Service Provider dan Facade pada `config.app`
 ```php
 'providers' => [
 
-    Laravolt\Indonesia\ServiceProvider::class
+    Karomap\Indonesia\ServiceProvider::class
 
 ]
 ```
@@ -30,7 +30,7 @@ Tambahkan Service Provider dan Facade pada `config.app`
 ```php
 'aliases' => [
 
-    'Indonesia' => Laravolt\Indonesia\Facade::class
+    'Indonesia' => Karomap\Indonesia\Facade::class
 
 ]
 ```
@@ -44,14 +44,14 @@ $app->withEloquent();
 
 Dalam file `bootstrap/app.php`, daftarkan service provider dan alias/facade dengan menambahkan kode berokut.
 ```php
-$app->register(Laravolt\Indonesia\ServiceProvider::class);
+$app->register(Karomap\Indonesia\ServiceProvider::class);
 
 
 // class aliases
-class_alias(Laravolt\Indonesia\Facade::class, 'Indonesia');
+class_alias(Karomap\Indonesia\Facade::class, 'Indonesia');
 ```
 
-Untuk mengatur prefix tabel, buat file `config/laravolt.php`, lalu copy kode berikut (ganti `indonesia_` dengan nilai prefix tabel yang diinginkan),
+Untuk mengatur prefix tabel, buat file `config/wilayah-indonesia.php`, lalu copy kode berikut (ganti `indonesia_` dengan nilai prefix tabel yang diinginkan),
 ```php
 <?php
 
@@ -63,19 +63,19 @@ return [
 ```
 Lalu daftarkan konfigurasi dalam `bootstrap/app.php` dengan menambahkan kode berikut.
 ```php
-$app->configure('laravolt');
+$app->configure('karomap');
 ```
 
-Untuk selanjutnya, konfigurasi bisa dipanggil dengan cara `config('laravolt.indonesia.table_prefix')`.
+Untuk selanjutnya, konfigurasi bisa dipanggil dengan cara `config('karomap.indonesia.table_prefix')`.
 
 ### Publish Migration (Hanya Untuk Laravel/Lumen 5.2)
 
 Jika Anda menggunakan Laravel/Lumen versi 5.3 ke atas, abaikan langkah di bawah ini.
 Untuk Laravel:
 ```php
-php artisan vendor:publish --provider="Laravolt\Indonesia\ServiceProvider"
+php artisan vendor:publish --provider="Karomap\Indonesia\ServiceProvider"
 ```
-Untuk Lumen, file migrations harus di-copy manual dari direktori `vendor/laravolt/indonesia/database/migrations` atau [Migrations](database/migrations/)
+Untuk Lumen, file migrations harus di-copy manual dari direktori `vendor/karomap/indonesia/database/migrations` atau [Migrations](database/migrations/)
 
 ### Jalankan Migration
 ```php
@@ -84,7 +84,7 @@ php artisan migrate
 
 ### Jalankan Seeder Untuk Mengisi Data Wilayah
 ```php
-php artisan laravolt:indonesia:seed
+php artisan karomap:indonesia:seed
 ```
 
 ### Untuk menambahkan seedernya ke file `DatabaseSeeder.php` ikuti contoh berikut:
@@ -92,10 +92,10 @@ php artisan laravolt:indonesia:seed
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Laravolt\Indonesia\Seeds\CitiesSeeder;
-use Laravolt\Indonesia\Seeds\VillagesSeeder;
-use Laravolt\Indonesia\Seeds\DistrictsSeeder;
-use Laravolt\Indonesia\Seeds\ProvincesSeeder;
+use Karomap\Indonesia\Models\Desa;
+use Karomap\Indonesia\Models\Kecamatan;
+use Karomap\Indonesia\Models\Kokab;
+use Karomap\Indonesia\Models\Provinsi;
 
 class DatabaseSeeder extends Seeder
 {
@@ -107,10 +107,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            ProvincesSeeder::class,
-            CitiesSeeder::class,
-            DistrictsSeeder::class,
-            VillagesSeeder::class,
+            $this->call(ProvinsiSeeder::class);
+            $this->call(KokabSeeder::class);
+            $this->call(KecamatanSeeder::class);
+            $this->call(DesaSeeder::class);
         ]);
     }
 }
