@@ -67,6 +67,24 @@ class IndonesiaService
         return Models\Kokab::paginate($numRows);
     }
 
+    public function allCitiesByProvince($kode)
+    {
+        if ($this->search) {
+            return Models\Kokab::search($this->search)->where('kode_provinsi', $kode)->get();
+        }
+
+        return Models\Kokab::where('kode_provinsi', $kode)->get();
+    }
+
+    public function paginateCitiesByProvince($kode, $numRows = 15)
+    {
+        if ($this->search) {
+            return Models\Kokab::search($this->search)->where('kode_provinsi', $kode)->paginate();
+        }
+
+        return Models\Kokab::where('kode_provinsi', $kode)->paginate($numRows);
+    }
+
     public function allDistricts()
     {
         if ($this->search) {
@@ -85,6 +103,24 @@ class IndonesiaService
         return Models\Kecamatan::paginate($numRows);
     }
 
+    public function allDistrictsByCity($kode)
+    {
+        if ($this->search) {
+            return Models\Kecamatan::search($this->search)->where('kode_kokab', $kode)->get();
+        }
+
+        return Models\Kecamatan::where('kode_kokab', $kode)->get();
+    }
+
+    public function paginateDistrictsByCity($kode, $numRows = 15)
+    {
+        if ($this->search) {
+            return Models\Kecamatan::search($this->search)->where('kode_kokab', $kode)->paginate();
+        }
+
+        return Models\Kecamatan::where('kode_kokab', $kode)->paginate($numRows);
+    }
+
     public function allVillages()
     {
         if ($this->search) {
@@ -101,6 +137,24 @@ class IndonesiaService
         }
 
         return Models\Desa::paginate($numRows);
+    }
+
+    public function allVillagesByDistrict($kode)
+    {
+        if ($this->search) {
+            return Models\Desa::search($this->search)->where('kode_kecamatan', $kode)->get();
+        }
+
+        return Models\Desa::where('kode_kecamatan', $kode)->get();
+    }
+
+    public function paginateVillagesByDistrict($kode, $numRows = 15)
+    {
+        if ($this->search) {
+            return Models\Desa::search($this->search)->where('kode_kecamatan', $kode)->paginate();
+        }
+
+        return Models\Desa::where('kode_kecamatan', $kode)->paginate($numRows);
     }
 
     public function findProvince($provinceId, $with = null)
