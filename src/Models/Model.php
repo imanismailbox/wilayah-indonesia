@@ -18,7 +18,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
 
         $this->table = config('wilayah-indonesia.table_prefix') . $this->table;
         $this->primaryKey = 'kode';
-        $this->appends = ['address'];
+        // $this->appends = ['address'];
     }
 
     public function scopeSearch($query, $keyword)
