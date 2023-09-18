@@ -2,7 +2,7 @@
 
 namespace Itik\Indonesia\Seeds;
 
-use Carbon\Carbon;
+// use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +11,7 @@ class ProvinsiSeeder extends Seeder
 {
     public function run()
     {
-        $now = Carbon::now();
+        // $now = Carbon::now();
         $csv = new CsvtoArray();
         $file = __DIR__ . '/../../resources/csv/provinsi.csv';
         $header = ['kode', 'nama'];
