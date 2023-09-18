@@ -16,9 +16,9 @@ class ProvinsiSeeder extends Seeder
         $file = __DIR__ . '/../../resources/csv/provinsi.csv';
         $header = ['kode', 'nama'];
         $data = $csv->csv_to_array($file, $header);
-        $data = array_map(function ($arr) use ($now) {
-            return $arr + ['created_at' => $now, 'updated_at' => $now];
-        }, $data);
+        // $data = array_map(function ($arr) use ($now) {
+        //     return $arr + ['created_at' => $now, 'updated_at' => $now];
+        // }, $data);
 
         $collection = collect($data);
         foreach ($collection->chunk(50) as $chunk) {
