@@ -1,14 +1,14 @@
 <?php
 
-namespace Itik\Indonesia;
+namespace Badak\Indonesia;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\Support\Str;
-use Itik\Indonesia\Commands\SeedCommand;
-// use Itik\Indonesia\Commands\SyncCoordinateCommand;
+use Badak\Indonesia\Commands\SeedCommand;
+// use Badak\Indonesia\Commands\SyncCoordinateCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -47,44 +47,12 @@ class ServiceProvider extends BaseServiceProvider
             );
         }
 
-        $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'indonesia');
 
-        if (config('wilayah-indonesia.route.enabled')) {
-            $this->registerRoutes();
-        }
-
-        if (config('wilayah-indonesia.menu.enabled')) {
-            $this->registerMenu();
-        }
-
-        if ($this->app->bound('itik.acl')) {
-            $this->app['itik.acl']->registerPermission(Permission::toArray());
+        if ($this->app->bound('badak.acl')) {
+            $this->app['badak.acl']->registerPermission(Permission::toArray());
         }
 
         $this->registerMacro();
-    }
-
-    protected function registerMenu()
-    {
-        if ($this->app->bound('itik.menu')) {
-            $menu = app('itik.menu')->add('Data Wilayah');
-            $menu->add(__('Provinsi'), route('indonesia::provinsi.index'))
-                ->data('icon', 'map')
-                ->data('permission', Permission::MANAGE_INDONESIA)
-                ->active(config('wilayah-indonesia.route.prefix') . '/provinsi/*');
-            $menu->add(__('Kota/Kabupaten'), route('indonesia::kabupaten.index'))
-                ->data('icon', 'map marker')
-                ->data('permission', Permission::MANAGE_INDONESIA)
-                ->active(config('wilayah-indonesia.route.prefix') . '/kabupaten/*');
-            $menu->add(__('Kecamatan'), route('indonesia::kecamatan.index'))
-                ->data('icon', 'map marker alternate')
-                ->data('permission', Permission::MANAGE_INDONESIA)
-                ->active(config('wilayah-indonesia.route.prefix') . '/kecamatan/*');
-            $menu->add(__('Desa/Kelurahan'), route('indonesia::kelurahan.index'))
-                ->data('icon', 'map pin')
-                ->data('permission', Permission::MANAGE_INDONESIA)
-                ->active(config('wilayah-indonesia.route.prefix') . '/kelurahan/*');
-        }
     }
 
     protected function registerMacro()
@@ -114,12 +82,6 @@ class ServiceProvider extends BaseServiceProvider
 
             return $this;
         });
-    }
-
-    protected function registerRoutes()
-    {
-        $router = $this->app['router'];
-        require __DIR__ . '/../routes/web.php';
     }
 
     protected function isLaravel()

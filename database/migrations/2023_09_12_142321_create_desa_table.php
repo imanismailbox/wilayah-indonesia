@@ -14,11 +14,9 @@ class CreateDesaTable extends Migration
     public function up()
     {
         Schema::create(config('wilayah-indonesia.table_prefix') . 'desa', function (Blueprint $table) {
-            // $table->bigIncrements('id');
             $table->char('kode', 10)->unique()->primary();
             $table->char('kode_kecamatan', 7);
             $table->string('nama', 255);
-            $table->timestamps();
 
             $table->foreign('kode_kecamatan')
                 ->references('kode')

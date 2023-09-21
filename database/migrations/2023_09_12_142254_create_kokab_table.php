@@ -14,11 +14,9 @@ class CreateKokabTable extends Migration
     public function up()
     {
         Schema::create(config('wilayah-indonesia.table_prefix') . 'kokab', function (Blueprint $table) {
-            // $table->bigIncrements('id');
             $table->char('kode', 4)->unique()->primary();
             $table->char('kode_provinsi', 2);
             $table->string('nama', 255);
-            $table->timestamps();
 
             $table->foreign('kode_provinsi')
                 ->references('kode')

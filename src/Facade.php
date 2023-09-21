@@ -1,6 +1,6 @@
 <?php
 
-namespace Itik\Indonesia;
+namespace Badak\Indonesia;
 
 use Illuminate\Support\Facades\Facade as BaseFacade;
 

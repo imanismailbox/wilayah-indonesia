@@ -1,6 +1,6 @@
 <?php
 
-namespace Itik\Indonesia;
+namespace Badak\Indonesia;
 
 class IndonesiaService
 {

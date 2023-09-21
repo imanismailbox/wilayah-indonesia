@@ -1,12 +1,12 @@
 {
-  "name": "itik/indonesia",
-  "description": "Package Laravel yang berisi data Provinsi, Kabupaten/Kota, Kecamatan, dan Keluarahan/Desa di seluruh Indonesia. clone from itik/indonesia",
+  "name": "badak/indonesia",
+  "description": "Package Laravel yang berisi data Provinsi, Kabupaten/Kota, Kecamatan, dan Keluarahan/Desa di seluruh Indonesia. clone from badak/indonesia",
   "keywords": [
     "laravel",
-    "itik",
+    "laravolt",
     "indonesia",
     "provinsi",
-    "kabupaten",
+    "Kabupaten",
     "kota",
     "kecamatan",
     "kelurahan",
@@ -21,12 +21,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Itik\\Indonesia\\": "src/"
+      "Badak\\Indonesia\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Itik\\Indonesia\\Test\\": "tests/"
+      "Badak\\Indonesia\\Test\\": "tests/"
     }
   },
   "require": {
@@ -44,10 +44,10 @@
     },
     "laravel": {
       "providers": [
-        "Itik\\Indonesia\\ServiceProvider"
+        "Badak\\Indonesia\\ServiceProvider"
       ],
       "aliases": {
-        "Indonesia": "Itik\\Indonesia\\Facade"
+        "Indonesia": "Badak\\Indonesia\\Facade"
       }
     }
   }

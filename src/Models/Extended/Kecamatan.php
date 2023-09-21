@@ -1,14 +1,14 @@
 <?php
 
-namespace Itik\Indonesia\Models\Extended;
+namespace Badak\Indonesia\Models\Extended;
 
-use Itik\Support\Traits\AutoFilter;
-use Itik\Support\Traits\AutoSort;
+use Badak\Support\Traits\AutoFilter;
+use Badak\Support\Traits\AutoSort;
 
-class Kecamatan extends \Itik\Indonesia\Models\Kecamatan
+class Kecamatan extends \Badak\Indonesia\Models\Kecamatan
 {
     use AutoFilter;
     use AutoSort;
 
-    protected $table = 'districts';
+    protected $table = 'kecamatan';
 }

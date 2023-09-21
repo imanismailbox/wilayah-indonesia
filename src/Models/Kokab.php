@@ -1,27 +1,28 @@
 <?php
 
-namespace Itik\Indonesia\Models;
+namespace Badak\Indonesia\Models;
 
 class Kokab extends Model
 {
     protected $table = 'kokab';
     protected $searchableColumns = ['kode', 'nama', 'provinsi.nama'];
+    public $timestamps = false;
 
     public function provinsi()
     {
-        return $this->belongsTo('Itik\Indonesia\Models\Provinsi', 'kode_provinsi', 'kode');
+        return $this->belongsTo('Badak\Indonesia\Models\Provinsi', 'kode_provinsi', 'kode');
     }
 
     public function kecamatan()
     {
-        return $this->hasMany('Itik\Indonesia\Models\Kecamatan', 'kode_kokab', 'kode');
+        return $this->hasMany('Badak\Indonesia\Models\Kecamatan', 'kode_kokab', 'kode');
     }
 
     public function villages()
     {
         return $this->hasManyThrough(
-            'Itik\Indonesia\Models\Desa',
-            'Itik\Indonesia\Models\Kecamatan',
+            'Badak\Indonesia\Models\Desa',
+            'Badak\Indonesia\Models\Kecamatan',
             'kode_kokab',
             'kode_kecamatan',
             'kode',

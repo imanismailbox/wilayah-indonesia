@@ -1,6 +1,6 @@
 <?php
 
-namespace Itik\Indonesia\Test;
+namespace Badak\Indonesia\Test;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 
@@ -11,7 +11,7 @@ class IndonesiaTest extends TestCase
     /** @test */
     public function it_can_call_indonesia_service()
     {
-        $this->artisan('itik:indonesia:seed');
+        $this->artisan('badak:indonesia:seed');
 
         $this->checkProvinces();
         $this->checkCities();

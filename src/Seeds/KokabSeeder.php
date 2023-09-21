@@ -1,6 +1,6 @@
 <?php
 
-namespace Itik\Indonesia\Seeds;
+namespace Badak\Indonesia\Seeds;
 
 // use Carbon\Carbon;
 use Illuminate\Database\Seeder;

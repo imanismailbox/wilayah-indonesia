@@ -1,13 +1,13 @@
 <?php
 
-namespace Itik\Indonesia\Seeds;
+namespace Badak\Indonesia\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
-use Itik\Indonesia\Models\Desa;
-use Itik\Indonesia\Models\Kecamatan;
-use Itik\Indonesia\Models\Kokab;
-use Itik\Indonesia\Models\Provinsi;
+use Badak\Indonesia\Models\Desa;
+use Badak\Indonesia\Models\Kecamatan;
+use Badak\Indonesia\Models\Kokab;
+use Badak\Indonesia\Models\Provinsi;
 
 class DatabaseSeeder extends Seeder
 {

@@ -8,7 +8,7 @@ Data wilayah diambil dari [edwardsamuel/Wilayah-Administratif-Indonesia](https:/
 
 ### Install Package Via Composer
 ```
-composer require itik/indonesia
+composer require badak/indonesia
 ```
 
 ### Daftarkan Service Provider dan Facade (Untuk Laravel < 5.5)
@@ -20,7 +20,7 @@ Tambahkan Service Provider dan Facade pada `config.app`
 ```php
 'providers' => [
 
-    Itik\Indonesia\ServiceProvider::class
+    Badak\Indonesia\ServiceProvider::class
 
 ]
 ```
@@ -28,7 +28,7 @@ Tambahkan Service Provider dan Facade pada `config.app`
 ```php
 'aliases' => [
 
-    'Indonesia' => Itik\Indonesia\Facade::class
+    'Indonesia' => Badak\Indonesia\Facade::class
 
 ]
 ```
@@ -42,11 +42,11 @@ $app->withEloquent();
 
 Dalam file `bootstrap/app.php`, daftarkan service provider dan alias/facade dengan menambahkan kode berokut.
 ```php
-$app->register(Itik\Indonesia\ServiceProvider::class);
+$app->register(Badak\Indonesia\ServiceProvider::class);
 
 
 // class aliases
-class_alias(Itik\Indonesia\Facade::class, 'Indonesia');
+class_alias(Badak\Indonesia\Facade::class, 'Indonesia');
 ```
 
 Untuk mengatur prefix tabel, buat file `config/wilayah-indonesia.php`, lalu copy kode berikut (ganti `indonesia_` dengan nilai prefix tabel yang diinginkan),
@@ -55,7 +55,7 @@ Untuk mengatur prefix tabel, buat file `config/wilayah-indonesia.php`, lalu copy
 
 return [
     'indonesia' => [
-        'table_prefix' => 'id_',
+        'table_prefix' => 'indonesia_',
     ],
 ];
 ```
@@ -71,9 +71,9 @@ Untuk selanjutnya, konfigurasi bisa dipanggil dengan cara `config('wilayah-indon
 Jika Anda menggunakan Laravel/Lumen versi 5.3 ke atas, abaikan langkah di bawah ini.
 Untuk Laravel:
 ```php
-php artisan vendor:publish --provider="Itik\Indonesia\ServiceProvider"
+php artisan vendor:publish --provider="Badak\Indonesia\ServiceProvider"
 ```
-Untuk Lumen, file migrations harus di-copy manual dari direktori `vendor/itik/indonesia/database/migrations` atau [Migrations](database/migrations/)
+Untuk Lumen, file migrations harus di-copy manual dari direktori `vendor/badak/indonesia/database/migrations` atau [Migrations](database/migrations/)
 
 ### Jalankan Migration
 ```php
@@ -82,7 +82,7 @@ php artisan migrate
 
 ### Jalankan Seeder Untuk Mengisi Data Wilayah
 ```php
-php artisan itik:indonesia:seed
+php artisan badak:indonesia:seed
 ```
 
 ### Untuk menambahkan seedernya ke file `DatabaseSeeder.php` ikuti contoh berikut:
@@ -90,10 +90,10 @@ php artisan itik:indonesia:seed
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Itik\Indonesia\Models\Desa;
-use Itik\Indonesia\Models\Kecamatan;
-use Itik\Indonesia\Models\Kokab;
-use Itik\Indonesia\Models\Provinsi;
+use Badak\Indonesia\Models\Desa;
+use Badak\Indonesia\Models\Kecamatan;
+use Badak\Indonesia\Models\Kokab;
+use Badak\Indonesia\Models\Provinsi;
 
 class DatabaseSeeder extends Seeder
 {

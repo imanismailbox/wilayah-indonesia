@@ -1,14 +1,14 @@
 <?php
 
-namespace Itik\Indonesia\Models\Extended;
+namespace Badak\Indonesia\Models\Extended;
 
-use Itik\Support\Traits\AutoFilter;
-use Itik\Support\Traits\AutoSort;
+use Badak\Support\Traits\AutoFilter;
+use Badak\Support\Traits\AutoSort;
 
-class Provinsi extends \Itik\Indonesia\Models\Provinsi
+class Provinsi extends \Badak\Indonesia\Models\Provinsi
 {
     use AutoFilter;
     use AutoSort;
 
-    protected $table = 'provinces';
+    protected $table = 'provinsi';
 }

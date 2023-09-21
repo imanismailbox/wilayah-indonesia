@@ -1,6 +1,6 @@
 <?php
 
-namespace Itik\Indonesia\Test;
+namespace Badak\Indonesia\Test;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -8,20 +8,20 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            \Itik\Indonesia\ServiceProvider::class,
+            \Badak\Indonesia\ServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'Indonesia' => \Itik\Indonesia\Facade::class,
+            'Indonesia' => \Badak\Indonesia\Facade::class,
         ];
     }
 

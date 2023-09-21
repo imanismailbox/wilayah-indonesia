@@ -14,10 +14,8 @@ class CreateProvinsiTable extends Migration
     public function up()
     {
         Schema::create(config('wilayah-indonesia.table_prefix') . 'provinsi', function (Blueprint $table) {
-            // $table->bigIncrements('id');
             $table->char('kode', 2)->unique()->primary();
             $table->string('nama', 255);
-            $table->timestamps();
         });
     }
 

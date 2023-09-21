@@ -1,21 +1,21 @@
 <?php
 
-namespace Itik\Indonesia\Test\Models;
+namespace Badak\Indonesia\Test\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Itik\Indonesia\Models\Kokab;
-use Itik\Indonesia\Models\Kecamatan;
-use Itik\Indonesia\Models\Provinsi;
-use Itik\Indonesia\Models\Desa;
-use Itik\Indonesia\Test\TestCase;
+use Badak\Indonesia\Models\Kokab;
+use Badak\Indonesia\Models\Kecamatan;
+use Badak\Indonesia\Models\Provinsi;
+use Badak\Indonesia\Models\Desa;
+use Badak\Indonesia\Test\TestCase;
 
 class CityTest extends TestCase
 {
     /** @test */
     public function a_city_has_belongs_to_province_relation()
     {
-        $this->seed('Itik\Indonesia\Seeds\ProvincesSeeder');
-        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Badak\Indonesia\Seeds\ProvincesSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KokabSeeder');
 
         $city = Kokab::first();
 
@@ -26,8 +26,8 @@ class CityTest extends TestCase
     /** @test */
     public function a_city_has_many_districts_relation()
     {
-        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
-        $this->seed('Itik\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KecamatanSeeder');
 
         $city = Kokab::first();
 
@@ -38,9 +38,9 @@ class CityTest extends TestCase
     /** @test */
     public function a_city_has_many_villages_relation()
     {
-        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
-        $this->seed('Itik\Indonesia\Seeds\KecamatanSeeder');
-        $this->seed('Itik\Indonesia\Seeds\DesaSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KecamatanSeeder');
+        $this->seed('Badak\Indonesia\Seeds\DesaSeeder');
 
         $city = Kokab::first();
 
@@ -51,7 +51,7 @@ class CityTest extends TestCase
     /** @test */
     public function a_city_has_name_attribute()
     {
-        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KokabSeeder');
 
         $city = Kokab::first();
 
@@ -61,8 +61,8 @@ class CityTest extends TestCase
     /** @test */
     public function a_city_has_province_name_attribute()
     {
-        $this->seed('Itik\Indonesia\Seeds\ProvincesSeeder');
-        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Badak\Indonesia\Seeds\ProvincesSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KokabSeeder');
 
         $city = Kokab::first();
 
@@ -72,7 +72,7 @@ class CityTest extends TestCase
     /** @test */
     public function a_city_has_logo_path_attribute()
     {
-        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KokabSeeder');
 
         $city = Kokab::first();
 
@@ -82,7 +82,7 @@ class CityTest extends TestCase
     /** @test */
     public function a_city_can_store_meta_column()
     {
-        $this->seed('Itik\Indonesia\Seeds\KokabSeeder');
+        $this->seed('Badak\Indonesia\Seeds\KokabSeeder');
 
         $city = Kokab::first();
         $city->meta = ['luas_wilayah' => 200.2];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Itik\Indonesia\Models;
+namespace Badak\Indonesia\Models;
 
 class Model extends \Illuminate\Database\Eloquent\Model
 {
@@ -18,7 +18,6 @@ class Model extends \Illuminate\Database\Eloquent\Model
 
         $this->table = config('wilayah-indonesia.table_prefix') . $this->table;
         $this->primaryKey = 'kode';
-        // $this->appends = ['address'];
     }
 
     public function scopeSearch($query, $keyword)

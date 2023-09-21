@@ -1,15 +1,16 @@
 <?php
 
-namespace Itik\Indonesia\Models;
+namespace Badak\Indonesia\Models;
 
 class Desa extends Model
 {
     protected $table = 'desa';
     protected $searchableColumns = ['kode', 'nama', 'kecamatan.nama'];
+    public $timestamps = false;
 
     public function kecamatan()
     {
-        return $this->belongsTo('Itik\Indonesia\Models\Kecamatan', 'kode_kecamatan', 'kode');
+        return $this->belongsTo('Badak\Indonesia\Models\Kecamatan', 'kode_kecamatan', 'kode');
     }
 
     public function getDistrictNameAttribute()

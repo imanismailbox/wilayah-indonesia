@@ -7,16 +7,16 @@ Data was taken from [edwardsamuel/Wilayah-Administratif-Indonesia](https://githu
 
 ### Package Installation
 
-Add Itik/Indonesia package with
+Add Badak/Indonesia package with
 
-`composer require itik/indonesia`
+`composer require badak/indonesia`
 
 Add Facade and Service Provider in `config/app.php`
 
 ```
 'providers' => [
 
-    Itik\Indonesia\ServiceProvider::class
+    Badak\Indonesia\ServiceProvider::class
 
 ]
 ```
@@ -24,7 +24,7 @@ Add Facade and Service Provider in `config/app.php`
 ```
 'aliases' => [
 
-    'Indonesia' => Itik\Indonesia\Facade::class
+    'Indonesia' => Badak\Indonesia\Facade::class
 
 ]
 ```
@@ -32,7 +32,7 @@ Add Facade and Service Provider in `config/app.php`
 ### Publish Migration (Only for Laravel 5.2)
 If you are using Laravel version 5.3+, you can ignore this step.
 ```
-php artisan vendor:publish --provider="Itik\Indonesia\ServiceProvider"
+php artisan vendor:publish --provider="Badak\Indonesia\ServiceProvider"
 ```
 
 ### Run Migration
@@ -42,7 +42,7 @@ php artisan migrate
 
 ### Run Database Seeder to Populate the Database
 ```
-php artisan itik:indonesia:seed
+php artisan badak:indonesia:seed
 ```
 
 ## Usage
