@@ -18,7 +18,7 @@ class Kokab extends Model
         return $this->hasMany('Badak\Indonesia\Models\Kecamatan', 'kode_kokab', 'kode');
     }
 
-    public function villages()
+    public function desa()
     {
         return $this->hasManyThrough(
             'Badak\Indonesia\Models\Desa',
