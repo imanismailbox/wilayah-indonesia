@@ -2,12 +2,13 @@
 
 namespace Badak\Indonesia;
 
+use Badak\Indonesia\Commands\SeedCommand;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\Support\Str;
-use Badak\Indonesia\Commands\SeedCommand;
+
 // use Badak\Indonesia\Commands\SyncCoordinateCommand;
 
 class ServiceProvider extends BaseServiceProvider
@@ -29,9 +30,9 @@ class ServiceProvider extends BaseServiceProvider
     */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/indonesia.php', 'wilayah-indonesia');
+        $this->mergeConfigFrom(__DIR__.'/../config/indonesia.php', 'wilayah-indonesia');
 
-        $databasePath = __DIR__ . '/../database/migrations';
+        $databasePath = __DIR__.'/../database/migrations';
         if ($this->isLumen()) {
             $this->loadMigrationsFrom($databasePath);
         } else {
@@ -41,12 +42,11 @@ class ServiceProvider extends BaseServiceProvider
         if (class_exists(Application::class)) {
             $this->publishes(
                 [
-                    __DIR__ . '/../config/indonesia.php' => config_path('wilayah-indonesia.php'),
+                    __DIR__.'/../config/indonesia.php' => config_path('wilayah-indonesia.php'),
                 ],
                 'config'
             );
         }
-
 
         if ($this->app->bound('badak.acl')) {
             $this->app['badak.acl']->registerPermission(Permission::toArray());
@@ -91,6 +91,6 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function isLumen()
     {
-        return !$this->isLaravel();
+        return ! $this->isLaravel();
     }
 }

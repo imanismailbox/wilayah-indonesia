@@ -2,11 +2,11 @@
 
 namespace Badak\Indonesia\Test\Models;
 
-use Badak\Indonesia\Models\Kecamatan;
 use Badak\Indonesia\Models\Desa;
+use Badak\Indonesia\Models\Kecamatan;
 use Badak\Indonesia\Test\TestCase;
 
-class VillageTest extends TestCase
+class DesaTest extends TestCase
 {
     /** @test */
     public function a_village_has_belongs_to_distict_relation()
@@ -14,10 +14,10 @@ class VillageTest extends TestCase
         $this->seed('Badak\Indonesia\Seeds\KecamatanSeeder');
         $this->seed('Badak\Indonesia\Seeds\DesaSeeder');
 
-        $village = Desa::first();
+        $desa = Desa::first();
 
-        $this->assertInstanceOf(Kecamatan::class, $village->district);
-        $this->assertEquals($village->district_code, $village->district->code);
+        $this->assertInstanceOf(Kecamatan::class, $desa->kecamatan);
+        $this->assertEquals($desa->kode_kecamatan, $desa->kecamatan->kode);
     }
 
     /** @test */
@@ -25,9 +25,9 @@ class VillageTest extends TestCase
     {
         $this->seed('Badak\Indonesia\Seeds\DesaSeeder');
 
-        $village = Desa::first();
+        $desa = Desa::first();
 
-        $this->assertEquals('KEUDE BAKONGAN', $village->name);
+        $this->assertEquals('Keude Bakongan', $desa->nama);
     }
 
     /** @test */
@@ -36,9 +36,9 @@ class VillageTest extends TestCase
         $this->seed('Badak\Indonesia\Seeds\KecamatanSeeder');
         $this->seed('Badak\Indonesia\Seeds\DesaSeeder');
 
-        $village = Desa::first();
+        $desa = Desa::first();
 
-        $this->assertEquals('BAKONGAN', $village->district_name);
+        $this->assertEquals('Bakongan', $desa->nama_kecamatan);
     }
 
     /** @test */
@@ -48,33 +48,21 @@ class VillageTest extends TestCase
         $this->seed('Badak\Indonesia\Seeds\KecamatanSeeder');
         $this->seed('Badak\Indonesia\Seeds\DesaSeeder');
 
-        $village = Desa::first();
+        $desa = Desa::first();
 
-        $this->assertEquals('KABUPATEN ACEH SELATAN', $village->city_name);
+        $this->assertEquals('Kab. Aceh Selatan', $desa->nama_kokab);
     }
 
     /** @test */
     public function a_village_has_province_name_attribute()
     {
-        $this->seed('Badak\Indonesia\Seeds\ProvincesSeeder');
+        $this->seed('Badak\Indonesia\Seeds\ProvinsiSeeder');
         $this->seed('Badak\Indonesia\Seeds\KokabSeeder');
         $this->seed('Badak\Indonesia\Seeds\KecamatanSeeder');
         $this->seed('Badak\Indonesia\Seeds\DesaSeeder');
 
-        $village = Desa::first();
+        $desa = Desa::first();
 
-        $this->assertEquals('ACEH', $village->province_name);
-    }
-
-    /** @test */
-    public function a_village_can_store_meta_column()
-    {
-        $this->seed('Badak\Indonesia\Seeds\DesaSeeder');
-
-        $village = Desa::first();
-        $village->meta = ['luas_wilayah' => 200.2];
-        $village->save();
-
-        $this->assertEquals(['luas_wilayah' => 200.2], $village->meta);
+        $this->assertEquals('Aceh (NAD)', $desa->nama_provinsi);
     }
 }

@@ -16,7 +16,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
     {
         parent::__construct($attributes);
 
-        $this->table = config('wilayah-indonesia.table_prefix') . $this->table;
+        $this->table = config('wilayah-indonesia.table_prefix').$this->table;
         $this->primaryKey = 'kode';
     }
 

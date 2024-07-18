@@ -13,7 +13,7 @@ class CreateProvinsiTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('wilayah-indonesia.table_prefix') . 'provinsi', function (Blueprint $table) {
+        Schema::create(config('wilayah-indonesia.table_prefix').'provinsi', function (Blueprint $table) {
             $table->char('kode', 2)->unique()->primary();
             $table->string('nama', 255);
         });
@@ -26,6 +26,6 @@ class CreateProvinsiTable extends Migration
      */
     public function down()
     {
-        Schema::drop(config('wilayah-indonesia.table_prefix') . 'provinsi');
+        Schema::drop(config('wilayah-indonesia.table_prefix').'provinsi');
     }
 }

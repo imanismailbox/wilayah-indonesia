@@ -13,14 +13,14 @@ class CreateKecamatanTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('wilayah-indonesia.table_prefix') . 'kecamatan', function (Blueprint $table) {
+        Schema::create(config('wilayah-indonesia.table_prefix').'kecamatan', function (Blueprint $table) {
             $table->char('kode', 7)->unique()->primary();
             $table->char('kode_kokab', 4);
             $table->string('nama', 255);
 
             $table->foreign('kode_kokab')
                 ->references('kode')
-                ->on(config('wilayah-indonesia.table_prefix') . 'kokab')
+                ->on(config('wilayah-indonesia.table_prefix').'kokab')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
@@ -32,6 +32,6 @@ class CreateKecamatanTable extends Migration
      */
     public function down()
     {
-        Schema::drop(config('wilayah-indonesia.table_prefix') . 'kecamatan');
+        Schema::drop(config('wilayah-indonesia.table_prefix').'kecamatan');
     }
 }

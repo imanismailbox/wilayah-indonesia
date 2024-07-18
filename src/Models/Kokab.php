@@ -5,7 +5,9 @@ namespace Badak\Indonesia\Models;
 class Kokab extends Model
 {
     protected $table = 'kokab';
+
     protected $searchableColumns = ['kode', 'nama', 'provinsi.nama'];
+
     public $timestamps = false;
 
     public function provinsi()
@@ -30,7 +32,7 @@ class Kokab extends Model
         );
     }
 
-    public function getProvinceNameAttribute()
+    public function getNamaProvinsiAttribute()
     {
         return $this->provinsi->nama;
     }

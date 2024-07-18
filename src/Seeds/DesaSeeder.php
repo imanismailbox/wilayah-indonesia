@@ -10,14 +10,10 @@ class DesaSeeder extends Seeder
 {
     public function run()
     {
-        // $now = Carbon::now();
         $csv = new CsvtoArray();
         $file = __DIR__ . '/../../resources/csv/desa.csv';
-        $header = ['kode', 'kode_kecamatan', 'nama',];
+        $header = ['kode', 'kode_kecamatan', 'nama'];
         $data = $csv->csv_to_array($file, $header);
-        // $data = array_map(function ($arr) use ($now) {
-        //     return $arr + ['created_at' => $now, 'updated_at' => $now];
-        // }, $data);
 
         $collection = collect($data);
         foreach ($collection->chunk(50) as $chunk) {

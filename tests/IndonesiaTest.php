@@ -32,11 +32,11 @@ class IndonesiaTest extends TestCase
 
         // array $with : kokab, kecamatan, desa, kokab.kecamatan, kokab.kecamatan.desa, kecamatan.desa
 
-        $selectedProvinceId = $results[0]->id;
+        $selectedProvinceId = $results[0]->kode;
 
         $result = \Indonesia::findProvince($selectedProvinceId);
 
-        $this->assertEquals($result->id, $selectedProvinceId);
+        $this->assertEquals($result->kode, $selectedProvinceId);
 
         $result = \Indonesia::findProvince($selectedProvinceId, ['kokab']);
 
@@ -77,11 +77,11 @@ class IndonesiaTest extends TestCase
 
         // array $with : provinsi, kecamatan, desa, kecamatan.desa
 
-        $selectedCityId = $results[0]->id;
+        $selectedCityId = $results[0]->kode;
 
         $result = \Indonesia::findCity($selectedCityId);
 
-        $this->assertEquals($result->id, $selectedCityId);
+        $this->assertEquals($result->kode, $selectedCityId);
 
         $result = \Indonesia::findCity($selectedCityId, ['provinsi']);
 
@@ -113,11 +113,11 @@ class IndonesiaTest extends TestCase
 
         // array $with : provinsi, kokab, kokab.provinsi, desa
 
-        $selectedDistrictId = $results[0]->id;
+        $selectedDistrictId = $results[0]->kode;
 
         $result = \Indonesia::findDistrict($selectedDistrictId);
 
-        $this->assertEquals($result->id, $selectedDistrictId);
+        $this->assertEquals($result->kode, $selectedDistrictId);
 
         $result = \Indonesia::findDistrict($selectedDistrictId, ['provinsi']);
 
@@ -149,11 +149,11 @@ class IndonesiaTest extends TestCase
 
         // array $with : provinsi, kokab, kecamatan, kecamatan.kokab, kecamatan.kokab.provinsi
 
-        $selectedVillageId = $results[0]->id;
+        $selectedVillageId = $results[0]->kode;
 
         $result = \Indonesia::findVillage($selectedVillageId);
 
-        $this->assertEquals($result->id, $selectedVillageId);
+        $this->assertEquals($result->kode, $selectedVillageId);
 
         $result = \Indonesia::findVillage($selectedVillageId, ['provinsi']);
 
@@ -177,7 +177,7 @@ class IndonesiaTest extends TestCase
 
     public function search()
     {
-        $results = \Indonesia::search('YOGYAKARTA')->all();
+        $results = \Indonesia::search('Yogyakarta')->all();
 
         $this->assertNotEmpty($results);
     }

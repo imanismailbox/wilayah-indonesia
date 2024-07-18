@@ -5,7 +5,9 @@ namespace Badak\Indonesia\Models;
 class Desa extends Model
 {
     protected $table = 'desa';
+
     protected $searchableColumns = ['kode', 'nama', 'kecamatan.nama'];
+
     public $timestamps = false;
 
     public function kecamatan()
@@ -13,17 +15,17 @@ class Desa extends Model
         return $this->belongsTo('Badak\Indonesia\Models\Kecamatan', 'kode_kecamatan', 'kode');
     }
 
-    public function getDistrictNameAttribute()
+    public function getNamaKecamatanAttribute()
     {
         return $this->kecamatan->nama;
     }
 
-    public function getCityNameAttribute()
+    public function getNamaKokabAttribute()
     {
         return $this->kecamatan->kokab->nama;
     }
 
-    public function getProvinceNameAttribute()
+    public function getNamaProvinsiAttribute()
     {
         return $this->kecamatan->kokab->provinsi->nama;
     }

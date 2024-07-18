@@ -8,7 +8,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     protected function getPackageProviders($app)
@@ -29,9 +29,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => 'indonesia_',
+            'prefix' => 'indonesia_',
         ]);
         $app['config']->set('indonesia.table_prefix', 'indonesia_');
     }

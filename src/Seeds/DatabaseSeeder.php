@@ -2,12 +2,12 @@
 
 namespace Badak\Indonesia\Seeds;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Schema;
 use Badak\Indonesia\Models\Desa;
 use Badak\Indonesia\Models\Kecamatan;
 use Badak\Indonesia\Models\Kokab;
 use Badak\Indonesia\Models\Provinsi;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
