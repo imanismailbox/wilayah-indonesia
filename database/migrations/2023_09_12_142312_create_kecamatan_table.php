@@ -14,7 +14,7 @@ class CreateKecamatanTable extends Migration
     public function up()
     {
         Schema::create(config('wilayah-indonesia.table_prefix').'kecamatan', function (Blueprint $table) {
-            $table->char('kode', 7)->unique()->primary();
+            $table->char('kode', 6)->unique()->primary();
             $table->char('kode_kokab', 4);
             $table->string('nama', 255);
 
