@@ -52,7 +52,7 @@ class KecamatanTest extends TestCase
 
         $kecamatan = Kecamatan::first();
 
-        $this->assertEquals('Kab. Aceh Selatan', $kecamatan->nama_kokab);
+        $this->assertEquals('Aceh Selatan', $kecamatan->nama_kokab);
     }
 
     /** @test */

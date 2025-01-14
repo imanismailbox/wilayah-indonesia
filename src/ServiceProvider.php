@@ -16,7 +16,7 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->app->bind('indonesia', function () {
-            return new IndonesiaService();
+            return new IndonesiaService;
         });
 
         $this->commands([

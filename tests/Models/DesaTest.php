@@ -50,7 +50,7 @@ class DesaTest extends TestCase
 
         $desa = Desa::first();
 
-        $this->assertEquals('Kab. Aceh Selatan', $desa->nama_kokab);
+        $this->assertEquals('Aceh Selatan', $desa->nama_kokab);
     }
 
     /** @test */

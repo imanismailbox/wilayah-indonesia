@@ -55,7 +55,7 @@ class KokabTest extends TestCase
 
         $kokab = Kokab::first();
 
-        $this->assertEquals('Kab. Aceh Selatan', $kokab->nama);
+        $this->assertEquals('Aceh Selatan', $kokab->nama);
     }
 
     /** @test */
